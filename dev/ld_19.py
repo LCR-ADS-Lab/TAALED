@@ -7,11 +7,11 @@ Created on Tue Dec 21 10:35:53 2021
 
 Underlying code for TAALED (second generation)
 """
-version = ".020" #split off from pre-process_17.py
+version = ".019" #split off from pre-process_17.py
 
 import math
 import pickle
-#import stat
+import stat
 import operator
 import statistics as stat
 from collections import Counter
@@ -127,7 +127,7 @@ class lexdiv():
 		
 		return(self.safe_divide(math.log10(ntypes), math.log10(ntokens)))
 
-	def MATTR(self, text, window_length = 50, outputs = False):
+	def MATTR(self, text, window_length = 50, outputs = True):
 		vals = []
 		windows = []
 		if len(text) < (window_length + 1):
@@ -241,7 +241,7 @@ class lexdiv():
 		factorls = [] #holder for factor lengths
 		for wl, fp in zip(windowl,factorprop): #iterate through window lengths and factor proportions
 			#print(wl/fp)	
-			factorls.append(self.safe_divide(wl,fp)) #window length/factor proportion
+			factorls.append(wl/fp) #window length/factor proportion
 		if listout == True:
 			return(factorls)
 		else:
@@ -288,87 +288,3 @@ class lexdiv():
 			self.mtld,self.mtldav,self.mtldo,self.mtldvals,self.mtldlists = self.MTLD(self.text,mn,ttrval,outputs = True)
 			if pltn == True:
 				self.mtldplot = ggplot() + aes(x=self.mtldvals) + geom_density(fill = "#56B4E9",alpha = .2) + geom_vline(xintercept = self.mtld,color = "red",linetype="dashed") + xlab("Density Plot")
-			self.vald = {"mtld" : self.mtld, "mtldo" : self.mtldo, "mattr" : self.mattr, "ttr" : self.ttr, "rttr" : self.rttr, "lttr" : self.lttr, "maas" : self.maas, "msttr" : self.msttr, "hdd" : self.hdd}
-
-#### Parallel Analysis
-class parallel():
-	def sampler(self, tok_text, mn = 50, mx = 200, interval = 5): #(tokenized text, minimum text lenth,maximum text length, text length interval)
-		#too_short = False
-		sample_dict = {}
-	
-		iterations  = int((mx - mn)/interval)+1 #number of lengths to examine.
-		#print(iterations)
-	
-		if len(tok_text) < mx:
-			print("Warning: Text is too short")
-			#too_short = True
-		else:
-			start = mn
-			#print(start)
-			tok_text = tok_text[:mx]
-		
-			for x in range(iterations):
-				sample_list = []
-				n_samples = int(mx/start)
-				#print(n_samples)
-			
-				for y in range(n_samples):
-					sample_list.append(tok_text[((y)*start):((y+1)*start)])
-				
-				sample_dict[start] = sample_list
-				start+=interval
-			
-	
-		return(sample_dict)
-	
-	def analysis(self,tok_text,funct, clss = False, mn = 50, mx = 200, interval = 5): #tokenized text, analysis function,minimum,maximum,interval
-		sampled = self.sampler(tok_text,mn,mx,interval)
-		vald = {}
-		for tl in sampled: #iterate through text lengths
-			vald[tl] = {"val" : None, "vals" : []}
-			for text in sampled[tl]: #iterate through texts
-				vald[tl]["vals"].append(funct(text).vald) #append item values
-			if clss == False:
-				vald[tl]["val"] = stat.mean(vald[tl]["vals"]) #calculate mean scores
-		
-		return(vald)
-	
-	def analyses(self,tok_text,functd, mn = 50, mx = 200, interval = 5): #functd is a {"FunctionName":function} dictionary
-		sampled = self.sampler(tok_text,mn,mx,interval)
-		outd = {}
-		for name in functd:
-			outd[name] = self.analysis(tok_text,functd[name], mn, mx, interval)
-	
-		return(outd) #{"FunctionName" : {"Length" : {"val" : average_value, "vals" : [all values]}}}
-
-	def ld_pa(self, vald, loi): #value dictionary from parallel; list of indices
-		outd = {}
-		for length in vald:
-			outd[length] = {}
-			if len(vald[length]['vals']) < 1:
-				continue
-			elif len(vald[length]['vals']) == 1:
-				for var in loi: #iterate through variables
-					outd[length][var] = vald[length]["vals"][0][var] #add variable to dictionary
-			else:
-				for var in loi: #iterate through variables
-					l = [] #holder for variables
-					for x in vald[length]["vals"]:
-						#print(x)
-						l.append(x[var])
-					outd[length][var] = stat.mean(l) #add mean of values to dictionary
-		return(outd)
-
-
-	def __init__(self, text = None, funct = None, clss = False, functd = None, mn = 50, mx = 200, interval = 5, loi = ["mtld", "mtldo", "mattr", "ttr", "rttr", "lttr", "maas", "msttr", "hdd"]):
-		if text != None:
-			#self.text = text
-			self.samples = self.sampler(text,mn,mx,interval)
-			if functd != None:
-				self.valsd = self.analyses(text,functd,mn,mx,interval)
-			if functd == None and funct!= None:
-				self.vald = self.analysis(text,funct,clss,mn,mx,interval)
-				if clss == True: #interpret function as a class that outputs an object (not a value)
-					self.ldvals = self.ld_pa(self.vald,loi)
-				else:
-					self.ldvals = None

@@ -84,10 +84,9 @@ This documentation describes available lexical diversity (LD) indices in this pa
 	
 | Recommendation               | Index (Minimum Text Length (tokens))               |
 | --------------------------- | --------------------------------------------------- |
-| Use with confidence (★★★)  |[MATTR](https://github.com/LCR-ADS-Lab/ld-project/blob/main/documentation.md#mattr) (50), [MTLD-Original](https://github.com/LCR-ADS-Lab/ld-project/blob/main/documentation.md#mtld-original) (50)   |
-| Use with caution (★★☆)      |[HD-D](https://github.com/LCR-ADS-Lab/ld-project/blob/main/documentation.md#hd-d) (50),  [Maas](https://github.com/LCR-ADS-Lab/ld-project/blob/main/documentation.md#maas) (100)              |
-| Avoid  (★☆☆)|[MSTTR](https://github.com/LCR-ADS-Lab/ld-project/blob/main/documentation.md#msttr),  [Log TTR](https://github.com/LCR-ADS-Lab/ld-project/blob/main/documentation.md#log-ttr),  [Root TTR](https://github.com/LCR-ADS-Lab/ld-project/blob/main/documentation.md#root-ttr),  [Simple TTR](https://github.com/LCR-ADS-Lab/ld-project/blob/main/documentation.md#type-token-ratio-ttr)                 |
-
+| Use with confidence (★★★)  |[MATTR](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#mattr) (50), [MTLD-Original](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#mtld-original) (50)   |
+| Use with caution (★★☆)      |[HD-D](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#hd-d) (50),  [Maas](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#maas) (100)              |
+| Avoid  (★☆☆)|[MSTTR](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#msttr),  [Log TTR](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#log-ttr),  [Root TTR](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#root-ttr),  [Simple TTR](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#type-token-ratio-ttr)                 |
 3. Provide information about related studies and references [**CLICK ▹LEARN MORE**]
 
 
