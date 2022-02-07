@@ -38,7 +38,8 @@ def get_fname(packagename,filename): #look in package, then in local working dir
 
 #realwordsf = get_fname('taaled',"real_words5.pickle") #words in written COCA that occur at least 5 times
 #for testing prior to upload:
-realwordsf = get_fname('taaled',"taaled/real_words5.pickle") #words in written COCA that occur at least 5 times
+#realwordsf = get_fname('taaled',"taaled/real_words5.pickle") #words in written COCA that occur at least 5 times
+realwordsf = get_fname('pylats',"real_words5.pickle") #words in written COCA that occur at least 5 times
 realwords = pickle.load(open(realwordsf,"rb"))
 
 txtsmpl = """There is a saying in my language that goes like: 'If only the young could know and the old could do'. This explains an important lesson, but one has to attain a certain degree of wisdom to understand it. In my opinion being young is more enjoyable, being older may make somebody more experienced but it would not make his life less boring.
