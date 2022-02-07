@@ -1,5 +1,5 @@
 # Tool for the Automatica Analysis of Lexical Diversity (TAALED)
-**insert introduction to python package here - this page is in progress!**
+TAALED is designed to calculate classic (but flawed) indices of lexical diversity such as the type-token ratio (TTR) and root TTR (also referred to as Guiraud's index) and more newly developed indices of lexical diversity that are stable across texts of different lengths such as moving average TTR (MATTR; Covington & McFall, 2010) and the measure of textual lexical diversity (MTLD; McCarthy & Jarvis, 2010).
 
 ## Installation
 To install taaled, you can use `pip`:
@@ -9,7 +9,7 @@ pip install taaled
 ```
 While not strictly necessary, this tutorial will presume that you have also installed [pylats](https://github.com/LCR-ADS-Lab/pylats) and [spacy](https://spacy.io/) for text preprocessing.
 
-taaled also makes use of [plotnine](https://plotnine.readthedocs.io/en/stable/installation.html) for data visualization. This package is not required for taaled to function properly, but is needed if data visualization (e.g., density plots for mattr windows) are desired.
+taaled also makes use of [plotnine](https://plotnine.readthedocs.io/en/stable/installation.html) for data visualization. This package is not required for taaled to function properly, but is needed if data visualization (e.g., density plots for mtld factor lengths) are desired.
 
 ## Getting started
 TAALED takes a list of strings as input and returns various indices of lexical diversity (and diagnostic information). In the rest of the tutorial, we will use [pylats](https://github.com/LCR-ADS-Lab/pylats) for preprocessing of texts (e.g., tokenization, lemmatization, word disambiguation, checking for misspelled words). Currently pylats only supports advanced features for English (models for other languages are forthcoming). However, TAALED can work with any language, as long as texts are tokenized (and appropriately preprocessed). See tools such as [spacy](https://spacy.io/), [stanza](https://stanfordnlp.github.io/stanza/), and [trankit](https://github.com/nlp-uoregon/trankit) for NLP pipelines for a wide range of languages.
@@ -75,6 +75,7 @@ print(ldvals.mattrwins[1]) #second window
 
 ```
 ['there_PRON', 'be_VERB', 'a_DET', 'saying_NOUN', 'in_ADP', 'my_PRON', 'language_NOUN', 'that_PRON', 'go_VERB', 'like_ADP', 'if_SCONJ', 'only_ADV', 'the_DET', 'young_ADJ', 'could_AUX', 'know_VERB', 'and_CCONJ', 'the_DET', 'old_ADJ', 'could_AUX', 'do_VERB', 'this_PRON', 'explain_VERB', 'an_DET', 'important_ADJ', 'lesson_NOUN', 'but_CCONJ', 'one_PRON', 'have_VERB', 'to_PART', 'attain_VERB', 'a_DET', 'certain_ADJ', 'degree_NOUN', 'of_ADP', 'wisdom_NOUN', 'to_PART', 'understand_VERB', 'it_PRON', 'in_ADP', 'my_PRON', 'opinion_NOUN', 'be_AUX', 'young_ADJ', 'be_AUX', 'more_ADV', 'enjoyable_ADJ', 'be_AUX', 'old_ADJ', 'may_AUX']
+
 ['be_VERB', 'a_DET', 'saying_NOUN', 'in_ADP', 'my_PRON', 'language_NOUN', 'that_PRON', 'go_VERB', 'like_ADP', 'if_SCONJ', 'only_ADV', 'the_DET', 'young_ADJ', 'could_AUX', 'know_VERB', 'and_CCONJ', 'the_DET', 'old_ADJ', 'could_AUX', 'do_VERB', 'this_PRON', 'explain_VERB', 'an_DET', 'important_ADJ', 'lesson_NOUN', 'but_CCONJ', 'one_PRON', 'have_VERB', 'to_PART', 'attain_VERB', 'a_DET', 'certain_ADJ', 'degree_NOUN', 'of_ADP', 'wisdom_NOUN', 'to_PART', 'understand_VERB', 'it_PRON', 'in_ADP', 'my_PRON', 'opinion_NOUN', 'be_AUX', 'young_ADJ', 'be_AUX', 'more_ADV', 'enjoyable_ADJ', 'be_AUX', 'old_ADJ', 'may_AUX', 'make_VERB']
 ```
 ## Overview of Indices
@@ -90,13 +91,21 @@ This documentation describes available lexical diversity (LD) indices in this pa
 3. Provide information about related studies and references [**CLICK ▹LEARN MORE**]
 
 
-## Traditional LD Indices (TTR, Root TTR, Log TTR)
+## Classic (but flawed) LD Indices (TTR, Root TTR, Log TTR)
 
 ### Type-token ratio (TTR)<sup>★☆☆</sup>
 
 <img src="https://latex.codecogs.com/svg.latex?\fn_cm&space;TTR&space;=&space;\frac{nTypes}{nTokens}" title="TTR = \frac{nTypes}{nTokens}" />
 
 TTR is calculated as the number of unique words in a text (types) divided by the number of running words (tokens)(Johnson, 1944)<sup>[2]</sup>.
+
+```python
+print(ldvals.ttr)
+```
+
+```
+0.5507246376811594
+```
 
 ### Root TTR<sup>★☆☆</sup>
 
@@ -113,12 +122,14 @@ Log TTR is calculated by dividing the logarithm of the number of word types by t
 <details><summary>LEARN MORE</summary>
 <p>
 
-* TTR is the simplest and the most classic LD index.
+* TTR is perhaps the most well known LD index.
 * Root TTR and Log TTR were two early attempts to correct for TTR's sensitivity to text length using simple mathematical transformations.
 * TTR values are intrinsically skewed by the length of a text, wherein longer texts tend to have lower TTR scores because the proportion of repeated words increases as the text grows longer (e.g., Koizumi & In'nami, 2012; Tweedie & Baayen, 1998)<sup>[6][7]</sup>.
-* Hess, Sefton, and Jandry (1986)<sup>[8]</sup> analyzed 50-uttterance oral language samples from 83 preschool children using five LD measures that were popular at the time: simple TTR, corrected TTR (Carroll, 1964)<sup>[9]</sup>, Root TTR, Log TTR, and Characteristic K (Yule, 1944)<sup>[10]</sup>. They concluded that all these LD measures were unsuitable for comparing texts of different lengths.
+* Hess, Sefton, and Jandry (1986)<sup>[8]</sup> analyzed oral language samples from 83 preschool children using five LD measures that were popular at the time: simple TTR, corrected TTR (Carroll, 1964)<sup>[9]</sup>, Root TTR, Log TTR, and Characteristic K (Yule, 1944)<sup>[10]</sup>. They concluded that all these LD measures were unsuitable for comparing texts of different lengths.
 * Hess, Haug, and Landry (1989)<sup>[11]</sup> used oral language samples from 52 elementary school children to analyze four versions of TTR: simple TTR, corrected TTR, Root TTR, and Log TTR. As was the case in the earlier study by Hess et al. (1986)<sup>[8]</sup>, results suggested that none of the TTR measures were stable across texts of different lengths.
+* Baayen & Tweedy (1998) ... This needs to be added!
 * McCarthy and Jarvis (2007)<sup>[12]</sup> used a parallel sampling technique to investigate the relationship between text length and LD indices in an L1 corpus of speaking and writing. They found that most indices (including TTR and root TTR) were strongly correlated with the text length.
+* Zenker & Kyle (2021) ... This needs to be added!
 
 </p>
 </details>
@@ -137,6 +148,7 @@ Maas' index is a more complex transformation of TTR that attempts to fit the val
 * Unlike most LD indices, lower Maas values are associated with higher LD.
 * Maas can be categorized into a log-transformed approach to the measure of LD. 
 * McCarthy and Jarvis (2010)<sup>[14]</sup> showed that Maas index was one of the main predictors of their register prediction model (along with MTLD and vocd-D).
+* Zenker & Kyle (2021) ... This needs to be added!
 
 
 </p>
