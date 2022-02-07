@@ -234,7 +234,7 @@ class lexdiv():
 	def MTLD_O(self,windowl,factorprop): #window length, factor proportion
 		nwords = sum(windowl)
 		nfactors = sum(factorprop)
-		return(nwords/nfactors)
+		return(self.safe_divide(nwords,nfactors))
 	
 	#mean factor length approach:
 	def MTLD_MFL(self,windowl,factorprop, listout = False): #window length, factor proportion
@@ -288,7 +288,7 @@ class lexdiv():
 			self.mtld,self.mtldav,self.mtldo,self.mtldvals,self.mtldlists = self.MTLD(self.text,mn,ttrval,outputs = True)
 			if pltn == True:
 				self.mtldplot = ggplot() + aes(x=self.mtldvals) + geom_density(fill = "#56B4E9",alpha = .2) + geom_vline(xintercept = self.mtld,color = "red",linetype="dashed") + xlab("Density Plot")
-			self.vald = {"mtld" : self.mtld, "mtldo" : self.mtldo, "mattr" : self.mattr, "ttr" : self.ttr, "rttr" : self.rttr, "lttr" : self.lttr, "maas" : self.maas, "msttr" : self.msttr, "hdd" : self.hdd}
+			self.vald = {"ntokens" : self.ntokens, "ntypes" : self.ntypes, "mtld" : self.mtld, "mtldo" : self.mtldo, "mattr" : self.mattr, "ttr" : self.ttr, "rttr" : self.rttr, "lttr" : self.lttr, "maas" : self.maas, "msttr" : self.msttr, "hdd" : self.hdd}
 
 #### Parallel Analysis
 class parallel():
@@ -372,3 +372,71 @@ class parallel():
 					self.ldvals = self.ld_pa(self.vald,loi)
 				else:
 					self.ldvals = None
+
+def ldwrite(lof,outname = "results.csv", loi = None, sep = "\t", funct = lexdiv, prll = False, params = params, mn = 50, mx = 200, interval = 5, clss = True, functd = None): #presumes that pylats and spacy are installed
+	try: #check to see if pylats can be loaded
+		from pylats import lats
+		latsld = True
+	except ModuleNotFoundError:
+		print("Pylats has not been installed.\nDefaulting to whitespace tokenization.\nFor much better text preprocessing (for English texts), please install pylats (https://github.com/LCR-ADS-Lab/pylats).")
+		latsld = False
+	
+	if loi == None: #default indices to process:
+		loi = ["ntokens","ntypes","mtld", "mtldo", "mattr", "ttr", "rttr", "lttr", "maas", "msttr", "hdd"]
+
+	### Main Function: ###
+	checked = 0 #for information to user
+	fc = len(lof) #total number of files considered
+	skipped = 0 #skipped due to length issues
+	skippedl = []
+	processed = 0 #sucessfully processed
+	if fc == 0:
+		print("No files in file list. Double check your list of files")
+		return(None)
+	outf = open(outname,"w") #create output file
+	if prll == True:
+		outf.write("filename" + sep + "length" + sep + sep.join(loi)) #write header including segment length
+	else:
+		outf.write("filename" + sep + sep.join(loi)) #write header without segment length
+	for fname in lof: #iterate through filenames
+		checked += 1
+		print(checked,"of",fc,fname)
+		simple_fname = fname.split("/")[-1] #get the filename without folder information
+		
+		if latsld == True: #process texts
+			normed_text = lats.Normalize(open(fname, errors="ignore").read(), params).toks #open file as string, ignore utf8 errors, normalize using parameters, extract tokens
+		else:
+			normed_text = open(fname, errors="ignore").read().lower().split(" ")
+
+		if len(normed_text) < 1 :
+			print(simple_fname, "is empty. Skipping")
+			skipped += 1
+			skippedl.append(simple_fname)
+			continue
+		#print(normed_text)
+		if prll == True: #if parallel analysis is conducted
+			if len(normed_text) < mx: #if file isn't long enough
+				print(simple_fname, "is too short. Skipping")
+				skipped += 1
+				skippedl.append(simple_fname)
+				continue
+			#parallel analysis with lexical diversity indices:
+			processed += 1
+			pt = parallel(normed_text,funct, clss, functd, mn, mx, interval, loi).ldvals #conduct parallel analysis for all indices, extract dictionary with length as a key and a dictionary of ld calculations as value
+			for length in pt: #iterate through text slices
+				outl = [simple_fname, str(length)] #list of items to write, will add each index below
+				for index in loi: #iterate through index list:
+					outl.append(str(pt[length][index])) #add index to outr list (in same order as loi list)
+				outf.write("\n" + sep.join(outl)) #write row to file
+				
+		else:
+			ldout = lexdiv(normed_text).vald #get dictionary version of lexical diversity output
+			outl = [simple_fname] #list of items to write, will add each index below
+			for index in loi: #iterate through index list:
+				outl.append(str(ldout[index])) #add index to outr list (in same order as loi list)
+			outf.write("\n" + sep.join(outl)) #write row to file
+			processed += 1
+
+	outf.flush()
+	outf.close()
+	print(fc,"files considered","\n",skipped,"files skipped due to length issues","\n",processed,"files successfully processed by TAALED")
