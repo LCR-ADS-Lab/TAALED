@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="taaled",
-    version="0.20",
+    version="0.21",
     author="Kristopher Kyle",
     author_email="kristopherkyle1@gmail.com",
-    description="Text preprocessing for downstream linguistic analyses",
+    description="Advanced analysis of lexical diversity",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/LCR-ADS-Lab/TAALED",

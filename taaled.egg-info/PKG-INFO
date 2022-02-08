@@ -1,7 +1,7 @@
 Metadata-Version: 2.1
 Name: taaled
-Version: 0.20
-Summary: Text preprocessing for downstream linguistic analyses
+Version: 0.21
+Summary: Advanced analysis of lexical diversity
 Home-page: https://github.com/LCR-ADS-Lab/TAALED
 Author: Kristopher Kyle
 Author-email: kristopherkyle1@gmail.com

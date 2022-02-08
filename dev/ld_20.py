@@ -7,7 +7,7 @@ Created on Tue Dec 21 10:35:53 2021
 
 Underlying code for TAALED (second generation)
 """
-version = ".021" #split off from pre-process_17.py
+version = ".020" #split off from pre-process_17.py
 
 import math
 import pickle
@@ -440,4 +440,4 @@ def ldwrite(lof,outname = "results.csv", loi = None, sep = "\t", funct = lexdiv,
 
 	outf.flush()
 	outf.close()
-	print(fc,"files considered","\n",skipped,"files skipped due to length issues:","\n",skippedl,"\n",processed,"files successfully processed by TAALED")
+	print(fc,"files considered","\n",skipped,"files skipped due to length issues","\n",processed,"files successfully processed by TAALED")
