@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="taaled",
-    version="0.21",
+    version="0.22",
     author="Kristopher Kyle",
     author_email="kristopherkyle1@gmail.com",
     description="Advanced analysis of lexical diversity",
