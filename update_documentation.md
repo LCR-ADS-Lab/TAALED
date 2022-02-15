@@ -70,9 +70,9 @@ ldvals = ld.lexdiv(clnsmpl.toks)
 
 | Recommendation               | Index (Minimum Text Length (tokens))               |
 | --------------------------- | --------------------------------------------------- |
-| Use with confidence (★★★)  |[MATTR](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#mattr) (50), [MTLD-Original](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#mtld-original) (50)   |
-| Use with caution (★★☆)      |[HD-D](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#hd-d) (50),  [Maas](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#maas) (100)              |
-| Avoid  (★☆☆)|[MSTTR](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#msttr),  [Log TTR](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#log-ttr),  [Root TTR](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#root-ttr),  [Simple TTR](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#type-token-ratio-ttr)      
+| Use with confidence (★★★)  |[MATTR](#mattr) (50), [MTLD-Original](#mtld)(50)   |
+| Use with caution (★★☆)      |[HD-D](#hd-d) (50),  [Maas](#maas) (100)              |
+| Avoid  (★☆☆)|[MSTTR](#msttr),  [Log TTR](#log-ttr),  [Root TTR](#root-ttr),  [Simple TTR](#type-token-ratio-ttr)      
 
 
 ## MATTR<sup>★★★</sup>
@@ -125,7 +125,7 @@ print(ldvals.mattrplot)
 </p>
 </details>
 
-## MTLD <sup>★★★</sup>
+## MTLD<sup>★★★</sup>
 The Measure of Textual Lexical Diversity (MTLD; McCarthy, 2005; McCarthy & Jarvis, 2010)<sup>[19][14]</sup> essentially measures the average number of tokens it takes to reach a specified TTR value (i.e., .720). There are variants of MTLD implementation.
 
 **Report mtld value**
@@ -138,11 +138,11 @@ print(ldvals.mtld)
 
 **Check mtldav? value**
 ```python
-print(ldvals.mtldav)
+print(ldvals.mtldav) #what's the difference between mtld and mtldav?
 ```
 **Check mtldo value**
 ```python
-print(ldvals.mtldo)
+print(ldvals.mtldo) #what's the difference between mtldo and mtld?
 ```
 **Check mtldvals value**
 ```python
@@ -150,7 +150,7 @@ print(ldvals.mtldvals)
 ```
 **Check mtldlists? value**
 ```python
-print(ldvals.mtldlists)
+print(ldvals.mtldlists) #should I include this?
 ```
 
 **Plot mtld**
@@ -178,7 +178,7 @@ Moving-average wrapped MTLD (MTLD-MA-Wrap; McCarthy & Jarvis, 2010)<sup>[14]</su
 </p>
 </details>
 
-## HD-D <sup>★★☆</sup>
+## HD-D<sup>★★☆</sup>
 
 For each word type in a text, HD-D uses the hypergeometric distribution to calculate the probability of encountering one of its tokens in a random sample of 42 tokens, and these probabilities are then added together to produce the final value for the text.
 
@@ -200,7 +200,7 @@ print(ldvals.hdd)
 </p>
 </details>
 
-## Maas <sup>★★☆</sup>
+## Maas<sup>★★☆</sup>
 <img src="https://latex.codecogs.com/svg.latex?\fn_cm&space;Maas&space;=&space;\frac{log(nTokens)-log(nTypes)}{log(nTokens)^{2}}" title="Maas = \frac{log(nTokens)-log(nTypes)}{log(nTokens)^{2}}" />
 
 Maas' index is a more complex transformation of TTR that attempts to fit the value to a logarithmic curve. It is often referred to simply as *Maas* (Maas, 1972)<sup>[13]</sup>.
@@ -225,7 +225,7 @@ print(ldvals.maas)
 </details>
 
 
-## Classic (but flawed) LD Indices (TTR, Root TTR, Log TTR)
+## Classic (but flawed) LD Indices (TTR, Root TTR, Log TTR, MSTTR)
 
 ### Type-token ratio (TTR)<sup>★☆☆</sup>
 
