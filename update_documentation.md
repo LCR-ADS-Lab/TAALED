@@ -58,7 +58,7 @@ len(set(clnsmpl.toks))
 ```
 
 ## Calculate lexical diversity indices
-For information about the full list of lexical diversity indices calculated by taaled, see the *next section?*.
+💡 For more information about the lexical diversity indices calculated by taaled, click **▶︎LEARN MORE**.
 
 **Create ldvals object**
 ```python
