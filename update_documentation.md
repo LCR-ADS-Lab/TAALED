@@ -110,6 +110,13 @@ print(ldvals.mattrwins[1]) #second window
 ['be_VERB', 'a_DET', 'saying_NOUN', 'in_ADP', 'my_PRON', 'language_NOUN', 'that_PRON', 'go_VERB', 'like_ADP', 'if_SCONJ', 'only_ADV', 'the_DET', 'young_ADJ', 'could_AUX', 'know_VERB', 'and_CCONJ', 'the_DET', 'old_ADJ', 'could_AUX', 'do_VERB', 'this_PRON', 'explain_VERB', 'an_DET', 'important_ADJ', 'lesson_NOUN', 'but_CCONJ', 'one_PRON', 'have_VERB', 'to_PART', 'attain_VERB', 'a_DET', 'certain_ADJ', 'degree_NOUN', 'of_ADP', 'wisdom_NOUN', 'to_PART', 'understand_VERB', 'it_PRON', 'in_ADP', 'my_PRON', 'opinion_NOUN', 'be_AUX', 'young_ADJ', 'be_AUX', 'more_ADV', 'enjoyable_ADJ', 'be_AUX', 'old_ADJ', 'may_AUX', 'make_VERB']
 ```
 
+**Plot mattr**
+```python
+print(ldvals.mattrplot)
+```
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/84297888/154139419-60edf94d-2919-477b-b46b-fe4e1321c80b.png">
+
+
 <details><summary>LEARN MORE</summary>
 <p>
 
@@ -127,6 +134,23 @@ print(ldvals.mtld)
 ```
 ```
 72.41499999999999
+```
+
+**Check mtldav? value**
+```python
+print(ldvals.mtldav)
+```
+**Check mtldo value**
+```python
+print(ldvals.mtldo)
+```
+**Check mtldvals value**
+```python
+print(ldvals.mtldvals)
+```
+**Check mtldlists? value**
+```python
+print(ldvals.mtldlists)
 ```
 
 **Plot mtld**
