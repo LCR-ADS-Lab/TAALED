@@ -192,6 +192,7 @@ print(ldvals.hdd)
 
 <details><summary>LEARN MORE</summary>
 <p>
+  
 * The hypergeometric distribution diversity index (HDD) is a more reliable calculation of *vocd-D* (Malvern & Richards, 1997)<sup>[18]</sup>. It relies on the probability that a word in a text would be included in a random sample from the text (McCarthy & Jarvis, 2007)<sup>[12]</sup>. For each word type in a text, HD-D uses the hypergeometric distribution to calculate the probability of encountering one of its tokens in a random sample of 42 tokens. These probabilities are then added together to produce the final HD-D value for the text. We convert this to the same scale as TTR for ease of interpretation.
 * Observing that vocd-D was rapidly becoming the preferred LD measures in the field, McCarthy and Jarvis (2007)<sup>[12]</sup> conducted an assessment of its sensitivity to text length using a corpus of 23 genres taken from various corpora. As a result, they concluded that vocd-D scores were not as independent of text length. In contrast, they found a small relationship (r=.282) between text length and HD-D for longer texts (up to 2000 words).
 * Koizumi and In'nami (2012)<sup>[6]</sup>, using a relatively small sample (n=38) of spoken L2 texts, found that HD-D was less affected by text length than other commonly used indices, while still reporting meaningful and significant effects.
