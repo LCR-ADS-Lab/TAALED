@@ -1,3 +1,5 @@
+# !UNDER CONSTRUCTION
+
 # Tool for the Automatic Analysis of Lexical Diversity (TAALED)
 TAALED is designed to calculate classic (but flawed) indices of lexical diversity such as the type-token ratio (TTR) and root TTR (also referred to as Guiraud's index) and more newly developed indices of lexical diversity that are stable across texts of different lengths such as moving average TTR (MATTR; Covington & McFall, 2010) and the measure of textual lexical diversity (MTLD; McCarthy & Jarvis, 2010).
 
@@ -20,10 +22,9 @@ from taaled import ld
 from pylats import lats #optional, but recommended for text preprocessing
 ```
 
-### Calculating indices
+### Preprocess a text
 Because some indices presume that texts are at least 50 words in length (see, e.g., [McCarthy & Jarvis, 2010](https://link.springer.com/article/10.3758/BRM.42.2.381); [Kyle, Crossley, & Jarvis, 2021](https://doi.org/10.1080/15434303.2020.1844205); [Zenker & Kyle, 2021](https://doi.org/10.1016/j.asw.2020.100505)), we will use a [longer text in this example](https://catalog.ldc.upenn.edu/desc/addenda/LDC2014T06.orig.txt) that conveniently is included in TAALED.
 
-### Preprocess a text
 Minimally, a text string must be turned into a flat list of strings to work with TAALED.
 
 Ideally, a number of text preprocessing/normalization steps will be used. In the example below, the [pylats](https://github.com/LCR-ADS-Lab/pylats) package is used to tokenize, the text, remove most punctuation, add part of speech tags (for homograph disambiguation), lemmatize each word, check for (and ignore) misspelled words (misspelled words will innapropriately inflate ld values), and convert all words to lower case. [pylats](https://github.com/LCR-ADS-Lab/pylats) is quite flexible/customizable, and the taaled package includes a default parameters object `ld.params` for use with pylats.
@@ -56,8 +57,8 @@ len(set(clnsmpl.toks))
 154
 ```
 
-### Calculate lexical diversity indices
-Calculation of lexical diversity indices is demonstrated below with the index MATTR (moving average type token ratio). For information about the full list of lexical diversity indices calculated by taaled, see the next section.
+## Calculate lexical diversity indices
+For information about the full list of lexical diversity indices calculated by taaled, see the *next section?*.
 
 **Create ldvals object**
 ```python
@@ -65,9 +66,20 @@ Calculation of lexical diversity indices is demonstrated below with the index MA
 ldvals = ld.lexdiv(clnsmpl.toks)
 ```
 
-**Report (1) mattr value**
+**A general guideline for using indices across texts of different lengths<sup>[1]</sup>**
 
-By default, `.mattr` reports the average TTR value for all 50-word moving windows in a text (tokens 1-50, 2-51, 3-52, etc.). Higher values indicate more diverse texts.
+| Recommendation               | Index (Minimum Text Length (tokens))               |
+| --------------------------- | --------------------------------------------------- |
+| Use with confidence (★★★)  |[MATTR](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#mattr) (50), [MTLD-Original](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#mtld-original) (50)   |
+| Use with caution (★★☆)      |[HD-D](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#hd-d) (50),  [Maas](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#maas) (100)              |
+| Avoid  (★☆☆)|[MSTTR](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#msttr),  [Log TTR](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#log-ttr),  [Root TTR](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#root-ttr),  [Simple TTR](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#type-token-ratio-ttr)      
+
+
+## MATTR<sup>★★★</sup>
+The Moving-Average Type-Token Ratio calculates the moving average for all segments of a given length. For a segment length of 50 tokens, TTR is calculated on tokens 1-50, 2-51, 3-53, etc., and the resulting TTR measurements are averaged to produce the final MATTR value (Covington & McFall, 2010)<sup>[15]</sup>.
+
+**Report mattr value**
+
 ```python
 print(ldvals.mattr) #moving average TTR value
 ```
@@ -97,21 +109,96 @@ print(ldvals.mattrwins[1]) #second window
 
 ['be_VERB', 'a_DET', 'saying_NOUN', 'in_ADP', 'my_PRON', 'language_NOUN', 'that_PRON', 'go_VERB', 'like_ADP', 'if_SCONJ', 'only_ADV', 'the_DET', 'young_ADJ', 'could_AUX', 'know_VERB', 'and_CCONJ', 'the_DET', 'old_ADJ', 'could_AUX', 'do_VERB', 'this_PRON', 'explain_VERB', 'an_DET', 'important_ADJ', 'lesson_NOUN', 'but_CCONJ', 'one_PRON', 'have_VERB', 'to_PART', 'attain_VERB', 'a_DET', 'certain_ADJ', 'degree_NOUN', 'of_ADP', 'wisdom_NOUN', 'to_PART', 'understand_VERB', 'it_PRON', 'in_ADP', 'my_PRON', 'opinion_NOUN', 'be_AUX', 'young_ADJ', 'be_AUX', 'more_ADV', 'enjoyable_ADJ', 'be_AUX', 'old_ADJ', 'may_AUX', 'make_VERB']
 ```
-**Report (2) mtld value**
+
+<details><summary>LEARN MORE</summary>
+<p>
+
+* MATTR has been demonstrated as one of the measures that meaningfully contributes to the human judgment of LD (Kyle et al., 2021)<sup>[17]</sup>.
+
+</p>
+</details>
+
+## MTLD <sup>★★★</sup>
+The Measure of Textual Lexical Diversity (MTLD; McCarthy, 2005; McCarthy & Jarvis, 2010)<sup>[19][14]</sup> essentially measures the average number of tokens it takes to reach a specified TTR value (i.e., .720). There are variants of MTLD implementation.
+
+**Report mtld value**
+```python
+print(ldvals.mtld)
+```
+```
+72.41499999999999
+```
+
+**Plot mtld**
+```python
+print(ldvals.mtldplot)
+```
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/84297888/154135920-0cba8556-b9fe-4ca7-b6ec-04e675f81af1.png">
 
 
+<details><summary>LEARN MORE</summary>
+<p>
+  
+### MTLD-Original<sup>★★★</sup>
+In the McCarthy and Jarvis's (2010)<sup>[14]</sup> paper, each of the text segments (i.e., the number of tokens) maintaining the TTR values is called a "factor". In MTLD-Original (McCarthy & Jarvis, 2010)<sup>[14]</sup>, factors are computed uni-directionally from the beginning to the end of the document, using non-overlapping text segments (i.e., subsequent cycles of factor calculation starts at the next token in the text). The remaining tokens that do not make up a full factor is called a partial factor, and this is used to adjust the final MTLD score.
 
-## Overview of Indices
-This documentation describes available lexical diversity (LD) indices in this package. Each section provides how each index is calculated and what to remember before using them for your functional or academic purposes. Each section is organized as follows:
-1. Provide a functional definition
-2. Provide a general guideline for using indices across texts of different lengths<sup>[1]</sup>
+### MTLD-MA-Bi<sup>★★☆</sup>
+Moving-average bidirectional MTLD (MTLD-MA-Bi; McCarthy & Jarvis, 2010)<sup>[14]</sup> is a revised MTLD procedure that takes a moving-average approach to compute factors. Moving-average calculation means that MTLD-MA-Bi uses the n-th token as the starting token for an n-th factor. Accordingly, the number of words required to create a factor is calculated for each progressive word in the text until a factor cannot be completed. Bidirectional means that the same procedure is repeated in backward, from the last token in the text. The final value is calculated as the average factor lengths out of all the factors.
 
-| Recommendation               | Index (Minimum Text Length (tokens))               |
-| --------------------------- | --------------------------------------------------- |
-| Use with confidence (★★★)  |[MATTR](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#mattr) (50), [MTLD-Original](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#mtld-original) (50)   |
-| Use with caution (★★☆)      |[HD-D](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#hd-d) (50),  [Maas](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#maas) (100)              |
-| Avoid  (★☆☆)|[MSTTR](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#msttr),  [Log TTR](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#log-ttr),  [Root TTR](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#root-ttr),  [Simple TTR](https://github.com/LCR-ADS-Lab/taaled/blob/main/README.md#type-token-ratio-ttr)                 |
-3. Provide information about related studies and references [**CLICK ▹LEARN MORE**]
+### MTLD-MA-Wrap<sup>★★★</sup>
+Moving-average wrapped MTLD (MTLD-MA-Wrap; McCarthy & Jarvis, 2010)<sup>[14]</sup> is another revised method of calculating MTLD. Like MTLD-MA-Bi, it takes a moving-average approach to create factors. However, instead of working through the text in both directions, MTLD-MA-Wrap avoids partial factors by looping back to the text's beginning.
+* Koizumi (2012)<sup>[20]</sup> evaluated MTLD (including simple TTR, Root TTR, and vocd-D) using spoken English samples from 20 Japanese adolescents. Each text was clipped to the first 200 words and then subdivided into 25 segments ranging in length from 50 to 200 tokens by parallel sampling. Results indicated that MTLD values stabilized at roughly 100 tokens, and none of the other indices produced stable values within the text length ranges included in the study.
+* Koizumi and In’nami (2012)<sup>[6]</sup> used similar methods and obtained the same pattern of results. Among simple TTR, Root TTR, Maas, vocd-D, HD-D, and MTLD, MTLD was the only index that produced stable values, with stabilization occurring at around 100 tokens.
+* Following the parallel sampling approach in Koizumi et al. (Koizumi, 2012; Koizumi & In'nami, 2012)<sup>[20][6]</sup>, Zenker and Kyle (2021)<sup>[1]</sup> evaluated MTLD using 4,542 argumentative essays by English learners from Asian regions. The result indicated that MTLD-Original and MTLD-MA-Wrap were robust to even shorter texts such as 50 words.
+* McCarthy and Jarvis (2010)<sup>[14]</sup> observed a very low correlation between MTLD-Original and the text length (using a corpus comprising texts from a range of registers such as editorials, official documents, academic prose, fiction, etc.). They also found that MTLD had a low correlation with the simple TTR, which can be a desirable property of a lexical diversity index since the simple TTR strongly correlates with text length.
+</p>
+</details>
+
+## HD-D <sup>★★☆</sup>
+
+For each word type in a text, HD-D uses the hypergeometric distribution to calculate the probability of encountering one of its tokens in a random sample of 42 tokens, and these probabilities are then added together to produce the final value for the text.
+
+**Report hdd value**
+```python
+print(ldvals.hdd)
+```
+```
+0.8494048984068776
+```
+
+<details><summary>LEARN MORE</summary>
+<p>
+* The hypergeometric distribution diversity index (HDD) is a more reliable calculation of *vocd-D* (Malvern & Richards, 1997)<sup>[18]</sup>. It relies on the probability that a word in a text would be included in a random sample from the text (McCarthy & Jarvis, 2007)<sup>[12]</sup>. For each word type in a text, HD-D uses the hypergeometric distribution to calculate the probability of encountering one of its tokens in a random sample of 42 tokens. These probabilities are then added together to produce the final HD-D value for the text. We convert this to the same scale as TTR for ease of interpretation.
+* Observing that vocd-D was rapidly becoming the preferred LD measures in the field, McCarthy and Jarvis (2007)<sup>[12]</sup> conducted an assessment of its sensitivity to text length using a corpus of 23 genres taken from various corpora. As a result, they concluded that vocd-D scores were not as independent of text length. In contrast, they found a small relationship (r=.282) between text length and HD-D for longer texts (up to 2000 words).
+* Koizumi and In'nami (2012)<sup>[6]</sup>, using a relatively small sample (n=38) of spoken L2 texts, found that HD-D was less affected by text length than other commonly used indices, while still reporting meaningful and significant effects.
+* Zenker and Kyle (2021)<sup>[1]</sup>, using a large corpus (n = 4,542) of written L2 argumentative texts found a negligible relationship (r = 0.064) between HD-D and text length.
+
+</p>
+</details>
+
+## Maas <sup>★★☆</sup>
+<img src="https://latex.codecogs.com/svg.latex?\fn_cm&space;Maas&space;=&space;\frac{log(nTokens)-log(nTypes)}{log(nTokens)^{2}}" title="Maas = \frac{log(nTokens)-log(nTypes)}{log(nTokens)^{2}}" />
+
+Maas' index is a more complex transformation of TTR that attempts to fit the value to a logarithmic curve. It is often referred to simply as *Maas* (Maas, 1972)<sup>[13]</sup>.
+
+**Report maas value**
+```python
+print(ldvals.maas)
+```
+```
+0.04252883206010792
+```
+
+<details><summary>LEARN MORE</summary>
+<p>
+  
+* Unlike most LD indices, lower Maas values are associated with higher LD.
+* Maas can be categorized into a log-transformed approach to the measure of LD.
+* McCarthy and Jarvis (2010)<sup>[14]</sup> showed that Maas index was one of the main predictors of their register prediction model (along with MTLD and vocd-D).
+* Zenker & Kyle (2021) ... This needs to be added!
+
+</p>
+</details>
 
 
 ## Classic (but flawed) LD Indices (TTR, Root TTR, Log TTR)
@@ -125,7 +212,6 @@ TTR is calculated as the number of unique words in a text (types) divided by the
 ```python
 print(ldvals.ttr)
 ```
-
 ```
 0.5507246376811594
 ```
@@ -136,11 +222,32 @@ print(ldvals.ttr)
 
 Root TTR is calculated as the number of types divided by the square root of the number of tokens (Guiraud, 1960, also called *Guirad's index*)<sup>[3]</sup>.
 
+```python
+print(ldvals.rttr)
+```
+```
+9.269710687604228
+```
 ### Log TTR<sup>★☆☆</sup>
 
 <img src="https://latex.codecogs.com/svg.latex?\fn_cm&space;Log&space;TTR&space;=&space;\frac{log(nTypes)}{log(nTokens)}" title="Log TTR = \frac{log(nTypes)}{log(nTokens)}" />
 
 Log TTR is calculated by dividing the logarithm of the number of word types by the logarithm of the number of word tokens (Chotlos, 1944; Herdan, 1960, also known as *Herdan's C*)<sup>[4][5]</sup>.
+```python
+print(ldvals.lttr)
+```
+```
+0.8961909875748562
+```
+
+### MSTTR<sup>★☆☆</sup>
+The Mean-Segmental Type-Token Ratio (MSTTR) is the average TTR for successive segments of text containing a standard number of word tokens (Johnson, 1944)<sup>[2]</sup>.
+```python
+print(ldvals.msttr)
+```
+```
+0.8160000000000001
+```
 
 <details><summary>LEARN MORE</summary>
 <p>
@@ -152,92 +259,14 @@ Log TTR is calculated by dividing the logarithm of the number of word types by t
 * Hess, Haug, and Landry (1989)<sup>[11]</sup> used oral language samples from 52 elementary school children to analyze four versions of TTR: simple TTR, corrected TTR, Root TTR, and Log TTR. As was the case in the earlier study by Hess et al. (1986)<sup>[8]</sup>, results suggested that none of the TTR measures were stable across texts of different lengths.
 * Baayen & Tweedy (1998) ... This needs to be added!
 * McCarthy and Jarvis (2007)<sup>[12]</sup> used a parallel sampling technique to investigate the relationship between text length and LD indices in an L1 corpus of speaking and writing. They found that most indices (including TTR and root TTR) were strongly correlated with the text length.
-* Zenker & Kyle (2021) ... This needs to be added!
-
-</p>
-</details>
-
-
-## Maas
-
-### Maas<sup>★★☆</sup>
-<img src="https://latex.codecogs.com/svg.latex?\fn_cm&space;Maas&space;=&space;\frac{log(nTokens)-log(nTypes)}{log(nTokens)^{2}}" title="Maas = \frac{log(nTokens)-log(nTypes)}{log(nTokens)^{2}}" />
-
-Maas' index is a more complex transformation of TTR that attempts to fit the value to a logarithmic curve. It is often referred to simply as *Maas* (Maas, 1972)<sup>[13]</sup>.
-
-<details><summary>LEARN MORE</summary>
-<p>
-
-* Unlike most LD indices, lower Maas values are associated with higher LD.
-* Maas can be categorized into a log-transformed approach to the measure of LD.
-* McCarthy and Jarvis (2010)<sup>[14]</sup> showed that Maas index was one of the main predictors of their register prediction model (along with MTLD and vocd-D).
-* Zenker & Kyle (2021) ... This needs to be added!
-
-
-</p>
-</details>
-
-
-## MSTTR & MATTR
-
-### MSTTR<sup>★☆☆</sup>
-The Mean-Segmental Type-Token Ratio (MSTTR) is the average TTR for successive segments of text containing a standard number of word tokens (Johnson, 1944)<sup>[2]</sup>.
-
-
-### MATTR<sup>★★★</sup>
-The Moving-Average Type-Token Ratio calculates the moving average for all segments of a given length. For a segment length of 50 tokens, TTR is calculated on tokens 1-50, 2-51, 3-53, etc., and the resulting TTR measurements are averaged to produce the final MATTR value (Covington & McFall, 2010)<sup>[15]</sup>.
-
-<details><summary>LEARN MORE</summary>
-<p>
-
+  
 * MSTTR computes TTR values for equal-sized segments (sometimes 30 words, but more typically 100 words) out of the original text and averages the values for each non-overlapping segments. The remaining words are discarded (Malvern & Richards, 2002)<sup>[16]</sup>.
 * MSTTR was introduced by Johnson (1944)<sup>[2]</sup> to overcome the weakness of classical TTR. However, a number of weaknesses have been identified in this approach (Malvern & Richards, 2002)<sup>[16]</sup>.
-* MATTR has been demonstrated as one of the measures that meaningfully contributes to the human judgment of LD (Kyle et al., 2021)<sup>[17]</sup>.
+  
+* Zenker & Kyle (2021) ... This needs to be added!
 
 </p>
 </details>
-
-
-## HD-D
-
-### HD-D<sup>★★☆</sup>
-The hypergeometric distribution diversity index (HDD) is a more reliable calculation of *vocd-D* (Malvern & Richards, 1997)<sup>[18]</sup>. It relies on the probability that a word in a text would be included in a random sample from the text (McCarthy & Jarvis, 2007)<sup>[12]</sup>. For each word type in a text, HD-D uses the hypergeometric distribution to calculate the probability of encountering one of its tokens in a random sample of 42 tokens. These probabilities are then added together to produce the final HD-D value for the text. We convert this to the same scale as TTR for ease of interpretation.
-
-<details><summary>LEARN MORE</summary>
-<p>
-
-* Observing that vocd-D was rapidly becoming the preferred LD measures in the field, McCarthy and Jarvis (2007)<sup>[12]</sup> conducted an assessment of its sensitivity to text length using a corpus of 23 genres taken from various corpora. As a result, they concluded that vocd-D scores were not as independent of text length. In contrast, they found a small relationship (r=.282) between text length and HD-D for longer texts (up to 2000 words).
-* Koizumi and In'nami (2012)<sup>[6]</sup>, using a relatively small sample (n=38) of spoken L2 texts, found that HD-D was less affected by text length than other commonly used indices, while still reporting meaningful and significant effects.
-* Zenker and Kyle (2021)<sup>[1]</sup>, using a large corpus (n = 4,542) of written L2 argumentative texts found a negligible relationship (r = 0.064) between HD-D and text length.
-
-</p>
-</details>
-
-
-## MTLD (Original, MA-Bi, MA-Wrap)
-The Measure of Textual Lexical Diversity (MTLD; McCarthy, 2005; McCarthy & Jarvis, 2010)<sup>[19][14]</sup> essentially measures the average number of tokens it takes to reach a specified TTR value (i.e., .720). There are variants of MTLD implementation.
-
-### MTLD-Original<sup>★★★</sup>
-In the McCarthy and Jarvis's (2010)<sup>[14]</sup> paper, each of the text segments (i.e., the number of tokens) maintaining the TTR values is called a "factor". In MTLD-Original (McCarthy & Jarvis, 2010)<sup>[14]</sup>, factors are computed uni-directionally from the beginning to the end of the document, using non-overlapping text segments (i.e., subsequent cycles of factor calculation starts at the next token in the text). The remaining tokens that do not make up a full factor is called a partial factor, and this is used to adjust the final MTLD score.
-
-### MTLD-MA-Bi<sup>★★☆</sup>
-Moving-average bidirectional MTLD (MTLD-MA-Bi; McCarthy & Jarvis, 2010)<sup>[14]</sup> is a revised MTLD procedure that takes a moving-average approach to compute factors. Moving-average calculation means that MTLD-MA-Bi uses the n-th token as the starting token for an n-th factor. Accordingly, the number of words required to create a factor is calculated for each progressive word in the text until a factor cannot be completed. Bidirectional means that the same procedure is repeated in backward, from the last token in the text. The final value is calculated as the average factor lengths out of all the factors.
-
-### MTLD-MA-Wrap<sup>★★★</sup>
-Moving-average wrapped MTLD (MTLD-MA-Wrap; McCarthy & Jarvis, 2010)<sup>[14]</sup> is another revised method of calculating MTLD. Like MTLD-MA-Bi, it takes a moving-average approach to create factors. However, instead of working through the text in both directions, MTLD-MA-Wrap avoids partial factors by looping back to the text's beginning.
-
-<details><summary>LEARN MORE</summary>
-<p>
-
-* Koizumi (2012)<sup>[20]</sup> evaluated MTLD (including simple TTR, Root TTR, and vocd-D) using spoken English samples from 20 Japanese adolescents. Each text was clipped to the first 200 words and then subdivided into 25 segments ranging in length from 50 to 200 tokens by parallel sampling. Results indicated that MTLD values stabilized at roughly 100 tokens, and none of the other indices produced stable values within the text length ranges included in the study.
-* Koizumi and In’nami (2012)<sup>[6]</sup> used similar methods and obtained the same pattern of results. Among simple TTR, Root TTR, Maas, vocd-D, HD-D, and MTLD, MTLD was the only index that produced stable values, with stabilization occurring at around 100 tokens.
-* Following the parallel sampling approach in Koizumi et al. (Koizumi, 2012; Koizumi & In'nami, 2012)<sup>[20][6]</sup>, Zenker and Kyle (2021)<sup>[1]</sup> evaluated MTLD using 4,542 argumentative essays by English learners from Asian regions. The result indicated that MTLD-Original and MTLD-MA-Wrap were robust to even shorter texts such as 50 words.
-* McCarthy and Jarvis (2010)<sup>[14]</sup> observed a very low correlation between MTLD-Original and the text length (using a corpus comprising texts from a range of registers such as editorials, official documents, academic prose, fiction, etc.). They also found that MTLD had a low correlation with the simple TTR, which can be a desirable property of a lexical diversity index since the simple TTR strongly correlates with text length.
-
-
-</p>
-</details>
-
 
 
 ## Related Studies
