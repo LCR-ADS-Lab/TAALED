@@ -99,6 +99,7 @@ This documentation describes available lexical diversity (LD) indices in this pa
 
 TTR is calculated as the number of unique words in a text (types) divided by the number of running words (tokens)(Johnson, 1944)<sup>[2]</sup>.
 
+
 ```python
 print(ldvals.ttr)
 ```
@@ -113,12 +114,23 @@ print(ldvals.ttr)
 
 Root TTR is calculated as the number of types divided by the square root of the number of tokens (Guiraud, 1960, also called *Guirad's index*)<sup>[3]</sup>.
 
+```python
+print(ldvals.rttr)
+```
+```
+9.14932483451846
+```
 ### Log TTR<sup>★☆☆</sup>
 
 <img src="https://latex.codecogs.com/svg.latex?\fn_cm&space;Log&space;TTR&space;=&space;\frac{log(nTypes)}{log(nTokens)}" title="Log TTR = \frac{log(nTypes)}{log(nTokens)}" />
 
 Log TTR is calculated by dividing the logarithm of the number of word types by the logarithm of the number of word tokens (Chotlos, 1944; Herdan, 1960, also known as *Herdan's C*)<sup>[4][5]</sup>.
-
+```python
+print(ldvals.lttr)
+```
+```
+0.8938651603109881
+```
 <details><summary>LEARN MORE</summary>
 <p>
 
