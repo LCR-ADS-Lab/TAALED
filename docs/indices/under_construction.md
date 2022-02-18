@@ -1,3 +1,6 @@
+---
+sort: 2
+---
 # !UNDER CONSTRUCTION
 
 # Tool for the Automatic Analysis of Lexical Diversity (TAALED)
