@@ -1,7 +1,11 @@
 
 # Tool for the Automatic Analysis of Lexical Diversity (TAALED)
 
+{% raw %}
+```warning
 **Note that the current documentation is under construction.**
+```
+{% endraw %}
 
 TAALED is designed to calculate classic (but flawed) indices of lexical diversity such as the type-token ratio (TTR) and root TTR (also referred to as Guiraud's index) and more newly developed indices of lexical diversity that are stable across texts of different lengths such as moving average TTR (MATTR; Covington & McFall, 2010) and the measure of textual lexical diversity (MTLD; McCarthy & Jarvis, 2010).
 ## Installation
