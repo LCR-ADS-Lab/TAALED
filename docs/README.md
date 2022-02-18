@@ -1,7 +1,8 @@
 
 # Tool for the Automatic Analysis of Lexical Diversity (TAALED)
-TAALED is designed to calculate classic (but flawed) indices of lexical diversity such as the type-token ratio (TTR) and root TTR (also referred to as Guiraud's index) and more newly developed indices of lexical diversity that are stable across texts of different lengths such as moving average TTR (MATTR; Covington & McFall, 2010) and the measure of textual lexical diversity (MTLD; McCarthy & Jarvis, 2010).
 
+**Note that the current documentation is under construction.**
+TAALED is designed to calculate classic (but flawed) indices of lexical diversity such as the type-token ratio (TTR) and root TTR (also referred to as Guiraud's index) and more newly developed indices of lexical diversity that are stable across texts of different lengths such as moving average TTR (MATTR; Covington & McFall, 2010) and the measure of textual lexical diversity (MTLD; McCarthy & Jarvis, 2010).
 ## Installation
 To install taaled, you can use `pip`:
 
@@ -21,10 +22,9 @@ from taaled import ld
 from pylats import lats #optional, but recommended for text preprocessing
 ```
 
-### Calculating indices
+### Preprocess a text
 Because some indices presume that texts are at least 50 words in length (see, e.g., [McCarthy & Jarvis, 2010](https://link.springer.com/article/10.3758/BRM.42.2.381); [Kyle, Crossley, & Jarvis, 2021](https://doi.org/10.1080/15434303.2020.1844205); [Zenker & Kyle, 2021](https://doi.org/10.1016/j.asw.2020.100505)), we will use a [longer text in this example](https://catalog.ldc.upenn.edu/desc/addenda/LDC2014T06.orig.txt) that conveniently is included in TAALED.
 
-### Preprocess a text
 Minimally, a text string must be turned into a flat list of strings to work with TAALED.
 
 Ideally, a number of text preprocessing/normalization steps will be used. In the example below, the [pylats](https://github.com/LCR-ADS-Lab/pylats) package is used to tokenize, the text, remove most punctuation, add part of speech tags (for homograph disambiguation), lemmatize each word, check for (and ignore) misspelled words (misspelled words will innapropriately inflate ld values), and convert all words to lower case. [pylats](https://github.com/LCR-ADS-Lab/pylats) is quite flexible/customizable, and the taaled package includes a default parameters object `ld.params` for use with pylats.
@@ -39,20 +39,20 @@ print(clnsmpl.toks[:10]) #check sample output
 ['there_PRON', 'be_VERB', 'a_DET', 'saying_NOUN', 'in_ADP', 'my_PRON', 'language_NOUN', 'that_PRON', 'go_VERB', 'like_ADP']
 ```
 
-### Calculate lexical diversity indices
-Calculation of lexical diversity indices is demonstrated below with the index MATTR (moving average type token ratio). For information about the full list of lexical diversity indices calcuated by taaled, see the next section.
+### Calculate basic numbers
 
-**Create ldvals object**
+**Number of Token**
 ```python
-#create ld object
-ldvals = ld.lexdiv(clnsmpl.toks)
+len(clnsmpl.toks)
 ```
-**Report mattr value**
+```
+276
+```
 
-By default, `.mattr` reports the average TTR value for all 50-word moving windows in a text (tokens 1-50, 2-51, 3-52, etc.). Higher values indicate more diverse texts.
+**Number of Type**
 ```python
-print(ldvals.mattr) #moving average TTR value
+len(set(clnsmpl.toks))
 ```
 ```
-0.7922466960352423
+154
 ```
