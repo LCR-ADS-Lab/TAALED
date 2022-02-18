@@ -1,8 +1,9 @@
 ---
-sort: 2
+sort: 3
 ---
 
 # LD Indices
+
 ## Guideline for index selection
 **A general guideline for using indices across texts of different lengths<sup>[1]</sup>**
 
