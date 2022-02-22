@@ -4,16 +4,19 @@ sort: 3
 
 # Related Studies
 
-[[1]](https://www.sciencedirect.com/science/article/pii/S1075293520300660?casa_token=5idiJdzo-EgAAAAA:uEW6GcL5DgURMVTQkZ48sOukpXURAMiwOtARDnQJ1mFTdwM_XqymVTkRdYyulAacZ_1xiQ) Zenker, F., & Kyle, K. (2021). Investigating minimum text lengths for lexical diversity indices. *Assessing Writing, 47*, 100505.
 
-[[2]](https://psycnet.apa.org/fulltext/2011-16010-001.pdf) Johnson, W. (1944). Studies in language behavior 1: A program of research. *Psychological Monographs, 56*, 1-15.
+### Chotlos, J. W. (1944). 
+Studies in language behavior IV: A statistical and comparative analysis of individual written language samples. *Psychological Monographs, 56*(2),
+77–111.[[4]](https://psycnet.apa.org/fulltext/2011-16010-004.pdf)
 
-[[3]](https://scholar.google.com/scholar_lookup?title=Problèmes%20et%20méthodes%20de%20la%20statistique%20linguistique%20%5BProblems%20and%20methods%20of%20linguistic%20statistics%5D&author=P.%20Guiraud&publication_year=1960) Guiraud, P. (1960). *Probl`emes et m ́ethodes de la statistique linguistique [Problems and methods of linguistic statistics]*. Dordrecht: Reidel.
+### Johnson, W. (1944). 
+Studies in language behavior 1: A program of research. *Psychological Monographs, 56*, 1-15. [[2]](https://psycnet.apa.org/fulltext/2011-16010-001.pdf) 
 
-[[4]](https://psycnet.apa.org/fulltext/2011-16010-004.pdf) Chotlos, J. W. (1944). Studies in language behavior IV: A statistical and comparative analysis of individual written language samples. *Psychological Monographs, 56*(2),
-77–111.
+### Guiraud, P. (1960). 
+*Probl`emes et m ́ethodes de la statistique linguistique [Problems and methods of linguistic statistics]*. Dordrecht: Reidel. [[3]](https://scholar.google.com/scholar_lookup?title=Problèmes%20et%20méthodes%20de%20la%20statistique%20linguistique%20%5BProblems%20and%20methods%20of%20linguistic%20statistics%5D&author=P.%20Guiraud&publication_year=1960)
 
-[[5]](https://scholar.google.com/scholar_lookup?title=Type-token%20mathematics%3A%20A%20textbook%20of%20mathematical%20linguistics&author=G.%20Herdan&publication_year=1960) Herdan, G. (1960). *Type-token mathematics: A textbook of mathematical linguistics*. The Hague: Mouton.
+### Herdan, G. (1960). 
+*Type-token mathematics: A textbook of mathematical linguistics*. The Hague: Mouton. [[5]](https://scholar.google.com/scholar_lookup?title=Type-token%20mathematics%3A%20A%20textbook%20of%20mathematical%20linguistics&author=G.%20Herdan&publication_year=1960)
 
 [[6]](https://www.sciencedirect.com/science/article/pii/S0346251X12000887?via%3Dihub) Koizumi, R., & In’nami, Y. (2012). Effects of text length on lexical diversity measures: Using short texts with less than 200 tokens. *System, 40*(4), 554–564.
 
@@ -44,3 +47,6 @@ sort: 3
 [[19]](https://www.aaai.org/ocs/index.php/FLAIRS/2010/paper/view/1283) McCarthy, P. M. (2005). *An assessment of the range and usefulness of lexical diversity measures and the potential of the measure of textual lexical diversity (MTLD)* (Doctoral dissertation). Memphis, TN: University of Memphis
 
 [[20]](http://www.vli-journal.org/issues/01.1/issue01.1.10.html) Koizumi, R. (2012). Relationships between text length and lexical diversity measures: Can we use short texts of less than 100 tokens? *Vocabulary Learning and Instruction, 1*(1), 60–69.
+
+### Zenker, F., & Kyle, K. (2021)
+Investigating minimum text lengths for lexical diversity indices. *Assessing Writing, 47*, 100505. [[1]](https://www.sciencedirect.com/science/article/pii/S1075293520300660?casa_token=5idiJdzo-EgAAAAA:uEW6GcL5DgURMVTQkZ48sOukpXURAMiwOtARDnQJ1mFTdwM_XqymVTkRdYyulAacZ_1xiQ)
