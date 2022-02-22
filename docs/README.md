@@ -11,4 +11,4 @@ TAALED is designed to calculate classic (but flawed) indices of lexical diversit
 
 
 ## How to cite TAALED
-- Kyle, K., Crossley, S. A., & Jarvis, S. (2020). Assessing the validity of lexical diversity indices using direct judgements. Language Assessment Quarterly, 1–17. https://doi.org/10.1080/15434303.2020.1844205
+- Kyle, K., Crossley, S. A., & Jarvis, S. (2021). Assessing the validity of lexical diversity indices using direct judgements. Language Assessment Quarterly, 1–17. https://doi.org/10.1080/15434303.2020.1844205
