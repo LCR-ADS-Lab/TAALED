@@ -2,5 +2,6 @@
 sort: 5
 ---
 
-# To be updated
+# Tutorials
+## To be updated
 Stay tuned for tutorials on lexical diversity analysis!
