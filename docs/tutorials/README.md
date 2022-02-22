@@ -1,8 +1,46 @@
 ---
-sort: 4
+sort: 3
 ---
 
-# Tutorials
+# Related Studies
 
+[[1]](https://www.sciencedirect.com/science/article/pii/S1075293520300660?casa_token=5idiJdzo-EgAAAAA:uEW6GcL5DgURMVTQkZ48sOukpXURAMiwOtARDnQJ1mFTdwM_XqymVTkRdYyulAacZ_1xiQ) Zenker, F., & Kyle, K. (2021). Investigating minimum text lengths for lexical diversity indices. *Assessing Writing, 47*, 100505.
 
-Stay tuned for tutorials on lexical diversity analysis!
+[[2]](https://psycnet.apa.org/fulltext/2011-16010-001.pdf) Johnson, W. (1944). Studies in language behavior 1: A program of research. *Psychological Monographs, 56*, 1-15.
+
+[[3]](https://scholar.google.com/scholar_lookup?title=Problèmes%20et%20méthodes%20de%20la%20statistique%20linguistique%20%5BProblems%20and%20methods%20of%20linguistic%20statistics%5D&author=P.%20Guiraud&publication_year=1960) Guiraud, P. (1960). *Probl`emes et m ́ethodes de la statistique linguistique [Problems and methods of linguistic statistics]*. Dordrecht: Reidel.
+
+[[4]](https://psycnet.apa.org/fulltext/2011-16010-004.pdf) Chotlos, J. W. (1944). Studies in language behavior IV: A statistical and comparative analysis of individual written language samples. *Psychological Monographs, 56*(2),
+77–111.
+
+[[5]](https://scholar.google.com/scholar_lookup?title=Type-token%20mathematics%3A%20A%20textbook%20of%20mathematical%20linguistics&author=G.%20Herdan&publication_year=1960) Herdan, G. (1960). *Type-token mathematics: A textbook of mathematical linguistics*. The Hague: Mouton.
+
+[[6]](https://www.sciencedirect.com/science/article/pii/S0346251X12000887?via%3Dihub) Koizumi, R., & In’nami, Y. (2012). Effects of text length on lexical diversity measures: Using short texts with less than 200 tokens. *System, 40*(4), 554–564.
+
+[[7]](https://link.springer.com/article/10.1023%2FA%3A1001749303137) Tweedie, F. J., & Baayen, R. H. (1998). How variable may a constant be? Measures of lexical richness in perspective. *Computers and the Humanities, 32*(5), 323–352.
+
+[[8]](https://pubs.asha.org/doi/10.1044/jshr.2901.129) Hess, C. W., Sefton, K. M., & Landry, R. G. (1986). Sample size and type-token ratios for oral language of preschool children. *Journal of Speech and Hearing Research, 29*(1), 129–134.
+
+[[9]](https://scholar.google.com/scholar_lookup?title=Language%20and%20thought&author=J.B.%20Carroll&publication_year=1964) Carroll, J. B. (1964). *Language and thought.* Englewood Cliffs, NJ: Prentice-Hall.
+
+[[10]](https://scholar.google.com/scholar_lookup?title=The%20statistical%20study%20of%20literary%20vocabulary&author=G.U.%20Yule&publication_year=1944) Yule, G. U. (1944). *The statistical study of literary vocabulary.* Cambridge: Cambridge University Press.
+
+[[11]](https://pubs.asha.org/doi/10.1044/jshr.3203.536) Hess, C. W., Haug, H., & Landry, R. G. (1989). The reliability of type-token ratios for the oral language of school age children. *Journal of Speech and Hearing Research, 32*(3), 536–540.
+
+[[12]](https://journals.sagepub.com/doi/10.1177/0265532207080767) McCarthy, P. M., & Jarvis, S. (2007). Vocd: A theoretical and empirical evaluation. *Language Testing, 24*(4), 459–488.
+
+[[13]](https://www.proquest.com/openview/ef789d09940e4fe1243a5c679a49de76/1/advanced) Maas, H. D. (1972). Über den Zusammenhang zwischen Wortschatzumfang und L ̈ange eines Textes [On the relationship between vocabulary and the length of a text].*Zeitschrift für Literaturwissenschaft und Linguistik, 2*(8), 73.
+
+[[14]](https://link.springer.com/article/10.3758%2FBRM.42.2.381) McCarthy, P. M., & Jarvis, S. (2010). MTLD, vocd-D, and HD-D: A validation study of sophisticated approaches to lexical diversity assessment. *Behavior Research Methods, 42*(2), 381–392.
+
+[[15]](https://www.tandfonline.com/doi/abs/10.1080/09296171003643098) Covington, M. A., & McFall, J. D. (2010). Cutting the Gordian knot: The moving-average type–token ratio (MATTR). *Journal of quantitative linguistics, 17*(2), 94-100.
+
+[[16]](https://journals.sagepub.com/doi/10.1191/0265532202lt221oa) Malvern, D., & Richards, B. (2002). Investigating accommodation in language proficiency interviews using a new measure of lexical diversity. *Language Testing, 19*(1), 85–104.
+
+[[17]](https://www.tandfonline.com/doi/full/10.1080/15434303.2020.1844205) Kyle, K., Crossley, S. A., & Jarvis, S. (2021). Assessing the validity of lexical diversity indices using direct judgements. *Language Assessment Quarterly, 18*(2), 154-170.
+
+[[18]](https://scholar.google.com/scholar?hl=ko&as_sdt=0%2C38&q=A+new+measure+of+lexical+diversity.+*British+Studies+in+Applied+Linguistics&btnG=) Malvern, D. D., & Richards, B. J. (1997). A new measure of lexical diversity. *British Studies in Applied Linguistics, 12*, 58–71.
+
+[[19]](https://www.aaai.org/ocs/index.php/FLAIRS/2010/paper/view/1283) McCarthy, P. M. (2005). *An assessment of the range and usefulness of lexical diversity measures and the potential of the measure of textual lexical diversity (MTLD)* (Doctoral dissertation). Memphis, TN: University of Memphis
+
+[[20]](http://www.vli-journal.org/issues/01.1/issue01.1.10.html) Koizumi, R. (2012). Relationships between text length and lexical diversity measures: Can we use short texts of less than 100 tokens? *Vocabulary Learning and Instruction, 1*(1), 60–69.
