@@ -2,8 +2,8 @@
 # Tool for the Automatic Analysis of Lexical Diversity (TAALED)
 
 {% raw %}
-```warning
-**Note that the current documentation is under construction.**
+```
+**under construction.**
 ```
 {% endraw %}
 
