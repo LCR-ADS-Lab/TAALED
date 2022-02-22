@@ -239,8 +239,6 @@ print(ldvals.msttr)
 
 
 ## Related Studies
-<details><summary>REFERENCES</summary>
-<p>
 
 [[1]](https://www.sciencedirect.com/science/article/pii/S1075293520300660?casa_token=5idiJdzo-EgAAAAA:uEW6GcL5DgURMVTQkZ48sOukpXURAMiwOtARDnQJ1mFTdwM_XqymVTkRdYyulAacZ_1xiQ) Zenker, F., & Kyle, K. (2021). Investigating minimum text lengths for lexical diversity indices. *Assessing Writing, 47*, 100505.
 
@@ -282,6 +280,3 @@ print(ldvals.msttr)
 [[19]](https://www.aaai.org/ocs/index.php/FLAIRS/2010/paper/view/1283) McCarthy, P. M. (2005). *An assessment of the range and usefulness of lexical diversity measures and the potential of the measure of textual lexical diversity (MTLD)* (Doctoral dissertation). Memphis, TN: University of Memphis
 
 [[20]](http://www.vli-journal.org/issues/01.1/issue01.1.10.html) Koizumi, R. (2012). Relationships between text length and lexical diversity measures: Can we use short texts of less than 100 tokens? *Vocabulary Learning and Instruction, 1*(1), 60–69.
-
-</p>
-</details>
