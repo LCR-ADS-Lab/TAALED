@@ -276,3 +276,4 @@ Moving-average wrapped MTLD (MTLD-MA-Wrap; McCarthy & Jarvis, 2010)<sup>[14]</su
  
 </p>
 </details>
+  
