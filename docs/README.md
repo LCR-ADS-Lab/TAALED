@@ -42,30 +42,6 @@ print(clnsmpl.toks[:10]) #check sample output
 ['there_PRON', 'be_VERB', 'a_DET', 'saying_NOUN', 'in_ADP', 'my_PRON', 'language_NOUN', 'that_PRON', 'go_VERB', 'like_ADP']
 ```
 
-### Calculate basic numbers
-
-**Number of Token**
-```python
-len(clnsmpl.toks)
-```
-```
-276
-```
-
-**Number of Type**
-```python
-len(set(clnsmpl.toks))
-```
-```
-154
-```
-
-**Created ldvals object**
-```python
-#create ld object
-ldvals = ld.lexdiv(clnsmpl.toks)
-```
-
 ### You are ready to calculate various LD indices!
 
 ### How to cite TAALED
