@@ -27,3 +27,7 @@ len(set(clnsmpl.toks))
 #create ld object
 ldvals = ld.lexdiv(clnsmpl.toks)
 ```
+
+### Let's start calculate LD indices!
+
+{% include list.liquid %}
