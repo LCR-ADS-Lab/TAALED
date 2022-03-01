@@ -1,7 +1,7 @@
 
 # Tool for the Automatic Analysis of Lexical Diversity (TAALED)
 
-TAALED is designed to calculate revised lexical diversity indices that are stable across texts of different lengths as well as classic indices.
+TAALED is designed to calculate revised lexical diversity indices that are stable across different text lengths as well as classic indices.
 
 # Quick start guides
 This page should explain minimal flow of package usage.
