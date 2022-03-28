@@ -4,9 +4,9 @@ sort: 1
 
 # Calculate LD indices
 
-**Created ldvals object**
+### Created ldvals object
 ```python
-#create ld object
+# We continue to use the sample text in the package.
 ldvals = ld.lexdiv(clnsmpl.toks)
 ```
 
@@ -42,6 +42,46 @@ print(ldvals.freqs[:10]) #sorted ten most frequent items
 ```result
 [('be_AUX', 17), ('the_DET', 9), ('to_PART', 9), ('and_CCONJ', 8), ('it_PRON', 8), ('you_PRON', 7), ('old_ADJ', 6), ('not_PART', 6), ('a_DET', 5), ('young_ADJ', 5)]
 ```
+
+#### You can apply the codes your own [sample essay](https://app.box.com/s/vw4803lct2dq4xbrquae).
+
+```python
+# The sample essay is from the The Gachon Learner Corpus.
+
+sample ='''
+On the road almost crash makes me very frightening. 
+We have every Saturday and Sunday off. I decided to go shopping on Saturday. 
+I bought some daily necessities. And I have eat lunch in a restaurant. 
+So I have been going home. When I passed the crossroad the green light was not bright. 
+After a while the green light I ready to cross the road. When I walk in the middle of the road suddenly a car rushed. 
+I was still. I want to finish it to hit me. On me from the place near the car stopped. The tyres was made brake loud. 
+The driver rushed off to apologize to me. This thing that made me think I fear.
+'''
+
+clnsmpl2 = lats.Normalize(sample, ld.params)
+ldvals2 = ld.lexdiv(clnsmpl2.toks)
+```
+
+```python
+print(ldvals2.ntokens)
+```
+```result
+120
+```
+
+```python
+print(ldvals2.ntypes)
+```
+```result
+70
+```
+```python
+print(ldvals2.freqs[:5])
+```
+```result
+[('i_PRON', 15), ('the_DET', 11), ('to_PART', 5), ('be_AUX', 4), ('on_ADP', 3)]
+```
+
 ### Let's start calculate LD indices!
 
 {% include list.liquid %}
