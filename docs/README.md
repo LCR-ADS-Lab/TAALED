@@ -52,7 +52,7 @@ clnsmpl = lats.Normalize(ld.txtsmpl, ld.params)
 print(clnsmpl.toks[:10]) #check sample output
 ```
 
-```
+```result
 ['there_PRON', 'be_VERB', 'a_DET', 'saying_NOUN', 'in_ADP', 'my_PRON', 'language_NOUN', 'that_PRON', 'go_VERB', 'like_ADP']
 ```
 
