@@ -5,7 +5,7 @@ TAALED is a Python package for calculating lexical diversity (LD) indices develo
 
 # Quick Start Guides
 
-## How to Install
+## How to Install TAALED
 To install TAALED, you can use `pip (a package installer for Python)`:
 
 ```bash
