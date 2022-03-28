@@ -6,7 +6,7 @@ sort: 1
 
 ### Created ldvals object
 ```python
-# We continue to use the sample text in the package.
+# We continue the tutorial using the sample text in the package.
 ldvals = ld.lexdiv(clnsmpl.toks)
 ```
 
@@ -43,11 +43,10 @@ print(ldvals.freqs[:10]) #sorted ten most frequent items
 [('be_AUX', 17), ('the_DET', 9), ('to_PART', 9), ('and_CCONJ', 8), ('it_PRON', 8), ('you_PRON', 7), ('old_ADJ', 6), ('not_PART', 6), ('a_DET', 5), ('young_ADJ', 5)]
 ```
 
-#### You can apply the codes your own [sample essay](https://app.box.com/s/vw4803lct2dq4xbrquae).
+#### You can apply the codes your own sample essay.
+The sample essay below is randomly chosen from the [The Gachon Learner Corpus](https://app.box.com/s/vw4803lct2dq4xbrquae).
 
 ```python
-# The sample essay below is from the The Gachon Learner Corpus.
-
 sample ='''
 On the road almost crash makes me very frightening. 
 We have every Saturday and Sunday off. I decided to go shopping on Saturday. 
