@@ -4,9 +4,16 @@ sort: 1
 
 # Calculate LD indices
 
-### Created ldvals object
+### Import packages and create a ldvals object
+
 ```python
 # We continue the tutorial using the sample text in the package.
+
+from taaled import ld #import a package
+from pylats import lats #optional
+
+clnsmpl = lats.Normalize(ld.txtsmpl, ld.params) #preprocessing
+
 ldvals = ld.lexdiv(clnsmpl.toks)
 ```
 
