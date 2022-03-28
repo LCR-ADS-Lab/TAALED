@@ -55,5 +55,5 @@ print(clnsmpl.toks[:10]) #check sample output
 ```
 
 ## How to Cite
-Kyle, K., Crossley, S. A., & Jarvis, S. (2021). Assessing the validity of lexical diversity indices using direct judgements. *Language Assessment Quarterly, 18*(2), 154-170.<sup>[11](https://lcr-ads-lab.github.io/TAALED/docs/references/1.%20Studies.html#kyle-k-crossley-s-a--jarvis-s-2021)</sup>
+Kyle, K., Crossley, S. A., & Jarvis, S. (2021). Assessing the validity of lexical diversity indices using direct judgements. *Language Assessment Quarterly, 18*(2), 154-170.<sup>[11](https://lcr-ads-lab.github.io/TAALED/references/1.%20Related%20Studies.html#kyle-k-crossley-s-a--jarvis-s-2021)</sup>
  
