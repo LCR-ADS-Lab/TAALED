@@ -1,7 +1,7 @@
 
 # Tool for the Automatic Analysis of Lexical Diversity (TAALED)
 
-TAALED is a Python package for calculating lexical diversity (LD) indices developed by [Kristopher Kyle](https://kristopherkyle.github.io/professional-webpage/). The package is designed for the researchers, students, and teachers in (applied) linguistics needing to calculate LD indices that are stable across different text lengths (i.e., revised LD indices) as well as classic LD incides. This documentation page is contributed by [Hakyung Sung](https://hksung.github.io) and [Masaki Eguchi](https://masakieguchi.weebly.com) in the [LCR-ADS lab](https://lcr-ads-lab.github.io/LCR-ADS-Home/) at the University of Oregon.
+TAALED is a Python package for calculating lexical diversity (LD) indices developed by [Kristopher Kyle](https://kristopherkyle.github.io/professional-webpage/). The package is designed for the researchers, students, and teachers in (applied) linguistics needing to calculate LD indices that are stable across different text lengths (i.e., revised LD indices) as well as classic LD indices. This documentation page is contributed by [Hakyung Sung](https://hksung.github.io) and [Masaki Eguchi](https://masakieguchi.weebly.com) in the [LCR-ADS lab](https://lcr-ads-lab.github.io/LCR-ADS-Home/) at the University of Oregon.
 
 # Quick Start Guides
 
@@ -13,10 +13,9 @@ pip install taaled
 ```
 
 ## How to Install Related Packages
-
 While not strictly necessary, this tutorial will presume that you have also installed following pacakges for text preprocessing and visualization. These are optional but recommended.
 
-TAALED takes a list of strings as input and returns various indices of lexical diversity (and diagnostic information). In the rest of the tutorial, we will use [pylats](https://github.com/LCR-ADS-Lab/pylats) for preprocessing of texts (e.g., tokenization, lemmatization, word disambiguation, checking for misspelled words). Currently pylats only supports advanced features for English (models for other languages are forthcoming). Pylats was tested using spacy version 3.2 and be default uses the "en_core_web_sm" model. To install spacy and a language model, see the [spacy installation instructions](https://spacy.io/usage).
+TAALED takes a list of strings as input and returns various indices of LD (and diagnostic information). In the rest of the tutorial, we will use [pylats](https://github.com/LCR-ADS-Lab/pylats) for preprocessing of texts (e.g., tokenization, lemmatization, word disambiguation, checking for misspelled words). Currently pylats only supports advanced features for English (models for other languages are forthcoming). Pylats was tested using spacy version 3.2 and be default uses the "en_core_web_sm" model. To install spacy and a language model, see the [spacy installation instructions](https://spacy.io/usage).
 
 However, TAALED can work with any language, as long as texts are tokenized (and appropriately preprocessed). See tools such as [spacy](https://spacy.io/), [stanza](https://stanfordnlp.github.io/stanza/), and [trankit](https://github.com/nlp-uoregon/trankit) for NLP pipelines for a wide range of languages.
 
@@ -31,7 +30,6 @@ pip install plotnine
 ```
 
 ## How to Import 
-
 We will import the installed packages in Python.
 
 ```python
