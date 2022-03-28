@@ -40,7 +40,7 @@ from pylats import lats #optional, but recommended for text preprocessing
 ```
 
 ## How to Preprocess a text
-Because some indices presume that texts are at least 50 words in length (see, e.g., [McCarthy & Jarvis, 2010](https://link.springer.com/article/10.3758/BRM.42.2.381); [Kyle, Crossley, & Jarvis, 2021](https://doi.org/10.1080/15434303.2020.1844205); [Zenker & Kyle, 2021](https://doi.org/10.1016/j.asw.2020.100505)), we will use a [longer text in this example](https://catalog.ldc.upenn.edu/desc/addenda/LDC2014T06.orig.txt) that conveniently is included in TAALED.
+Because some indices presume that texts are at least 50 words in length (see, e.g., McCarthy & Jarvis, 2010<sup>[16](https://lcr-ads-lab.github.io/TAALED/references/1.%20Studies.html#mccarthy-p-m--jarvis-s-2007)</sup>; Kyle, Crossley, & Jarvis, 2021<sup>[11](https://lcr-ads-lab.github.io/TAALED/references/1.%20Studies.html#kyle-k-crossley-s-a--jarvis-s-2021)</sup>;Zenker & Kyle, 2021<sup>[20](https://lcr-ads-lab.github.io/TAALED/references/1.%20Studies.html#zenker-f--kyle-k-2021)</sup>, we will use a [longer text in this example](https://catalog.ldc.upenn.edu/desc/addenda/LDC2014T06.orig.txt) that conveniently is included in TAALED.
 
 Minimally, a text string must be turned into a flat list of strings to work with TAALED.
 
@@ -57,4 +57,4 @@ print(clnsmpl.toks[:10]) #check sample output
 ```
 
 ## How to Cite
-Kyle, K., Crossley, S. A., & Jarvis, S. (2021). Assessing the validity of lexical diversity indices using direct judgements. Language Assessment Quarterly, 1–17. https://doi.org/10.1080/15434303.2020.1844205
+Kyle, K., Crossley, S. A., & Jarvis, S. (2021). Assessing the validity of lexical diversity indices using direct judgements. *Language Assessment Quarterly, 18*(2), 154-170.<sup>[11](https://lcr-ads-lab.github.io/TAALED/references/1.%20Studies.html#kyle-k-crossley-s-a--jarvis-s-2021)</sup>
