@@ -10,7 +10,7 @@ sort: 1
 ```python
 len(clnsmpl.toks)
 ```
-```
+```result
 276
 ```
 
@@ -18,7 +18,7 @@ len(clnsmpl.toks)
 ```python
 len(set(clnsmpl.toks))
 ```
-```
+```result
 154
 ```
 
