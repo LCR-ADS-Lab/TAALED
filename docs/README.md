@@ -14,7 +14,7 @@ pip install taaled
 
 ## How to Install Related Packages
 
-While not strictly necessary, this tutorial will presume that you have also installed following pacakges for text preprocessing and visualization. These are *optional* but recommended.
+While not strictly necessary, this tutorial will presume that you have also installed following pacakges for text preprocessing and visualization. These are optional but recommended.
 
 TAALED takes a list of strings as input and returns various indices of lexical diversity (and diagnostic information). In the rest of the tutorial, we will use [pylats](https://github.com/LCR-ADS-Lab/pylats) for preprocessing of texts (e.g., tokenization, lemmatization, word disambiguation, checking for misspelled words). Currently pylats only supports advanced features for English (models for other languages are forthcoming). Pylats was tested using spacy version 3.2 and be default uses the "en_core_web_sm" model. To install spacy and a language model, see the [spacy installation instructions](https://spacy.io/usage).
 
