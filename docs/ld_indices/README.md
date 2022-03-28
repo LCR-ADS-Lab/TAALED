@@ -46,7 +46,7 @@ print(ldvals.freqs[:10]) #sorted ten most frequent items
 #### You can apply the codes your own [sample essay](https://app.box.com/s/vw4803lct2dq4xbrquae).
 
 ```python
-# The sample essay is from the The Gachon Learner Corpus.
+# The sample essay below is from the The Gachon Learner Corpus.
 
 sample ='''
 On the road almost crash makes me very frightening. 
