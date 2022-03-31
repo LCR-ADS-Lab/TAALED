@@ -55,20 +55,20 @@ print(clnsmpl.toks[:10]) #check sample output
 
 ### Create a ldvals object
 
-To calculate LD indices for a single text, all you need is to run the following command over tokenized list. 
+To calculate LD indices for a single text, all you need is to run the following command over a tokenized list. 
 
 ```python
 ldvals = ld.lexdiv(clnsmpl.toks)
 ```
 
 ### Calculate basic numbers
-Once you created `a ldvals object`, you will be able to see the result of this analysis. 
+Once you created a `ldvals` object, you will be able to see the result of the analysis.
 
-Here, we present how to inspect basic textual informations such as the number of tokens, types, and document frequency for each words (i.e., how many times a particular word occurs in the input text).
+Here, we present how to inspect basic textual information such as the number of tokens, types, and document frequency for each word (i.e., how many times a particular word occurs in the input text).
 
 For how to output modern LD indices (e.g., MTLD, MATTR), see [Calculate Revised LD indices](https://lcr-ads-lab.github.io/TAALED/ld_indices/1.%20Revised_LD_indices.html).
-
 For classic LD indices (not recommended for serious use), see [Calculate Classic (but Flawed) LD Indices](https://lcr-ads-lab.github.io/TAALED/ld_indices/2.%20Classic_LD_indices.html).
+
 
 **Number of Token**
 ```python
@@ -140,7 +140,7 @@ print(ldvals2.freqs[:5])
 ```
 
 ### Let's start calculate LD indices!
-This quick start guide walked you through how to create `ldvals` object and output basic information.
+This quick-start guide walked you through how to create `ldvals` object and output basic information.
 In the following pages, we outline how to output lexical diversity indices and how to save your output.
 
 {% include list.liquid %}
