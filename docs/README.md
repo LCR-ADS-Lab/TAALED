@@ -54,6 +54,8 @@ print(clnsmpl.toks[:10]) #check sample output
 ['there_PRON', 'be_VERB', 'a_DET', 'saying_NOUN', 'in_ADP', 'my_PRON', 'language_NOUN', 'that_PRON', 'go_VERB', 'like_ADP']
 ```
 
+**To continue reading the quick-start guide, follow [this link and learn about how to calculate LD indices](https://lcr-ads-lab.github.io/TAALED/ld_indices/#create-a-ldvals-object).**
+
 ## How to Cite
 Kyle, K., Crossley, S. A., & Jarvis, S. (2021). Assessing the validity of lexical diversity indices using direct judgements. *Language Assessment Quarterly, 18*(2), 154-170.<sup>[11](https://lcr-ads-lab.github.io/TAALED/references/1.%20Related%20Studies.html#kyle-k-crossley-s-a--jarvis-s-2021)</sup>
  
