@@ -73,7 +73,7 @@ For classic LD indices (not recommended for serious use), see [Calculate Classic
 
 **Number of Token**
 
-`.ntokens` method will return the number of tokens in the input text.
+The `.ntokens` method will return the number of tokens in the input text.
 
 ```python
 print(ldvals.ntokens)
@@ -84,7 +84,7 @@ print(ldvals.ntokens)
 
 **Number of Type**
 
-`.ntypes` method will return the number of types (i.e., unique words) in the input text.
+The `.ntypes` method will return the number of types (i.e., unique words) in the input text.
 
 ```python
 print(ldvals.ntypes)
@@ -95,7 +95,7 @@ print(ldvals.ntypes)
 
 **Word Frequency**
 
-`.freqd` method will return the document frequencies (i.e., how many times each word occurs) of each word in the input text.
+The `.freqd` method will return the document frequencies (i.e., how many times each word occurs) of each word in the input text.
 
 ```python
 print(ldvals.freqd)
@@ -151,6 +151,6 @@ print(ldvals2.freqs[:5])
 
 ### Let's start calculating LD indices!
 This quick-start guide walked you through how to create `ldvals` object and output basic information.
-In the following pages, we outline how to output lexical diversity indices and how to batch process text files and save the output in csv.
+In the following pages, we outline how to output lexical diversity indices and how to batch process input text files and save the output in csv.
 
 {% include list.liquid %}
