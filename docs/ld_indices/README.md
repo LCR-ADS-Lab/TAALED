@@ -41,7 +41,7 @@ Because some indices presume that texts are at least 50 words in length (see, e.
 
 Minimally, a text string must be turned into a flat list of strings to work with TAALED.
 
-Ideally, a number of text preprocessing/normalization steps will be used. In the example below, the [pylats](https://github.com/LCR-ADS-Lab/pylats) package is used to tokenize, the text, remove most punctuation, add part of speech tags (for homograph disambiguation), lemmatize each word, check for (and ignore) misspelled words (misspelled words will innapropriately inflate ld values), and convert all words to lower case. [pylats](https://github.com/LCR-ADS-Lab/pylats) is quite flexible/customizable, and the taaled package includes a default parameters object `ld.params` for use with pylats.
+Ideally, a number of text preprocessing/normalization steps will be used. In the example below, the [pylats](https://github.com/LCR-ADS-Lab/pylats) package is used to tokenize the text, remove most punctuation, add part of speech tags (for homograph disambiguation), lemmatize each word, check for (and ignore) misspelled words (misspelled words will innapropriately inflate ld values), and convert all words to lower case. [pylats](https://github.com/LCR-ADS-Lab/pylats) is quite flexible/customizable, and the taaled package includes a default parameters object `ld.params` for use with pylats.
 
 ```python
 #if pylats is installed, preprocess the sample text using the default taaled parameters file
@@ -63,15 +63,15 @@ ldvals = ld.lexdiv(clnsmpl.toks)
 The `ldvals` object contains the result of the LD analysis, which can be accessed through respective methods. These are explained below.
 
 ### Calculate basic numbers
-Once you created a `ldvals` object, you will be able to see the result of the analysis by calling a method.
+Once you created an `ldvals` object, you will be able to see the result of the analysis by calling a method.
 
 Here, we present how to inspect basic textual information such as the number of tokens, types, and document frequency for each word (i.e., how many times a particular word occurs in the input text).
 
 For how to output modern LD indices (e.g., MTLD, MATTR), see [Calculate Revised LD indices](https://lcr-ads-lab.github.io/TAALED/ld_indices/1.%20Revised_LD_indices.html).
-For classic LD indices (not recommended for serious use), see [Calculate Classic (but Flawed) LD Indices](https://lcr-ads-lab.github.io/TAALED/ld_indices/2.%20Classic_LD_indices.html).
+For classic LD indices (not recommended except for comparison), see [Calculate Classic (but Flawed) LD Indices](https://lcr-ads-lab.github.io/TAALED/ld_indices/2.%20Classic_LD_indices.html).
 
 
-**Number of Token**
+**Number of Tokens**
 
 The `.ntokens` method will return the number of tokens in the input text.
 
@@ -82,7 +82,7 @@ print(ldvals.ntokens)
 276
 ```
 
-**Number of Type**
+**Number of Types**
 
 The `.ntypes` method will return the number of types (i.e., unique words) in the input text.
 
@@ -95,7 +95,7 @@ print(ldvals.ntypes)
 
 **Word Frequency**
 
-The `.freqd` method will return the document frequencies (i.e., how many times each word occurs) of each word in the input text.
+The `.freqd` method will return the document frequencies (i.e., how many times each word occurs in the text) of each word in the input text.
 
 ```python
 print(ldvals.freqd)

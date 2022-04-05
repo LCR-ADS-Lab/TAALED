@@ -1,11 +1,11 @@
 import setuptools
 
-with open("README.md", "r") as fh:
+with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="taaled",
-    version="0.22",
+    version="0.23",
     author="Kristopher Kyle",
     author_email="kristopherkyle1@gmail.com",
     description="Advanced analysis of lexical diversity",
