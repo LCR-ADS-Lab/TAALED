@@ -10,4 +10,4 @@ sort: 3
 * How to leave feedback, report bugs, and get help:
   * Find a simliar issue on the [Google mailing list](https://groups.google.com/g/linguistic-analysis-tools)
   * Submit a question
-* [NLP for Social Sciences](https://www.linguisticanalysistools.org): This website presents freely available and user-friendly NLP **desktop tools** including TAALED, TAALES, and TAASSC.
+* [NLP for Social Sciences](https://www.linguisticanalysistools.org): This website presents freely available NLP **desktop tools** including TAALED, TAALES, and TAASSC.
