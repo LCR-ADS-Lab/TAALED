@@ -3,7 +3,6 @@ README.md
 setup.py
 taaled/__init__.py
 taaled/ld.py
-taaled/ldgui.py
 taaled/real_words5.pickle
 taaled.egg-info/PKG-INFO
 taaled.egg-info/SOURCES.txt

@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="taaled",
-    version="0.23",
+    version="0.25",
     author="Kristopher Kyle",
     author_email="kristopherkyle1@gmail.com",
     description="Advanced analysis of lexical diversity",
@@ -16,7 +16,6 @@ setuptools.setup(
     include_package_data=True,
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
 )

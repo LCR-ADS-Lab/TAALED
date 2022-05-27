@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: taaled
-Version: 0.23
+Version: 0.25
 Summary: Advanced analysis of lexical diversity
 Home-page: https://github.com/LCR-ADS-Lab/TAALED
 Author: Kristopher Kyle
@@ -8,7 +8,6 @@ Author-email: kristopherkyle1@gmail.com
 License: UNKNOWN
 Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3
-Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
 Description-Content-Type: text/markdown
 

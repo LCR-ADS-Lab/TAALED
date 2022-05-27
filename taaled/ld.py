@@ -7,7 +7,7 @@ Created on Tue Dec 21 10:35:53 2021
 
 Underlying code for TAALED (second generation)
 """
-version = ".022" #split off from pre-process_17.py
+version = ".025" #split off from pre-process_17.py
 
 import math
 import pickle
@@ -17,7 +17,7 @@ import statistics as stat
 from collections import Counter
 import pkg_resources #for importing data from packages
 import itertools #for zip() function
-
+from os.path import exists
 
 #Try to import plotnine
 try:
@@ -34,7 +34,11 @@ def get_fname(packagename,filename): #look in package, then in local working dir
 	except (ModuleNotFoundError, TypeError):
 		print("NOTE:",filename,"not found in package, using local file")
 		data_filename = filename
-	return(data_filename)
+	if exists(data_filename):
+		return(data_filename)
+	else:
+		print("NOTE:",filename,"not found in package, using local file")
+		return(filename)
 
 #realwordsf = get_fname('taaled',"real_words5.pickle") #words in written COCA that occur at least 5 times
 #for testing prior to upload:
@@ -53,6 +57,8 @@ It's always easier to meet and get on well with new people as a young person. Pe
 Let's face it; people don't get wiser when they get old. They only get old, both in mind and the body. It's becomes harder and harder to deal with them so unfortunatly some families even consider to send them away."""
 
 class params: #for use with pylats.Normalize()
+	lang = "en"
+	model = "en_core_web_sm"
 	punctuation = ['``', "''", "'", '.', ',', '?', '!', ')', '(', '%', '/', '-', '_', '-LRB-', '-RRB-', 'SYM', ':', ';', '"']
 	punctse = [".","?","!"]
 	abbrvs = ["mrs.","ms.","mr.","dr.","phd."]
@@ -65,10 +71,18 @@ class params: #for use with pylats.Normalize()
 	lemma = True
 	lower = True
 	attested = True #filter output using real words list?
-	spaces = [" "] #need to add more here
+	spaces = [" ","  ","   ","    "] #need to add more here
 	override = [] #items the system ignores that should be overridden
+	posignore = []
+	numbers = ["NUM"] #pos_ tag for numbers
+	nonumbers = True
+	connect = "__" #for connecting ngrams
+	contentPOS = [] #can be added, blank for now
+	contentLemIgnore = [] #can be added, blank for now
 
 class default_params: #for resetting params if needed
+	lang = "en"
+	model = "en_core_web_sm"
 	punctuation = ['``', "''", "'", '.', ',', '?', '!', ')', '(', '%', '/', '-', '_', '-LRB-', '-RRB-', 'SYM', ':', ';', '"']
 	punctse = [".","?","!"]
 	abbrvs = ["mrs.","ms.","mr.","dr.","phd."]
@@ -79,9 +93,17 @@ class default_params: #for resetting params if needed
 	pos = "upos" #other options are "pos" for Penn tags and "upos" for universal tags
 	removel = ['becuase'] #typos and other words not caught by the real words list
 	lemma = True
+	lower = True
 	attested = True #filter output using real words list?
-	spaces = [" "] #need to add more here
+	spaces = [" ","  ","   ","    "] #need to add more here
 	override = [] #items the system ignores that should be overridden
+	posignore = []
+	numbers = ["NUM"] #pos_ tag for numbers
+	nonumbers = True
+	connect = "__" #for connecting ngrams
+	contentPOS = [] #can be added, blank for now
+	contentLemIgnore = [] #can be added, blank for now
+
 
 #feature rich lexdiv functions
 class lexdiv():
@@ -394,7 +416,7 @@ def ldwrite(lof,outname = "results.csv", loi = None, sep = "\t", funct = lexdiv,
 	if fc == 0:
 		print("No files in file list. Double check your list of files")
 		return(None)
-	outf = open(outname,"w") #create output file
+	outf = open(outname,"w",encoding = "utf-8") #create output file
 	if prll == True:
 		outf.write("filename" + sep + "length" + sep + sep.join(loi)) #write header including segment length
 	else:
@@ -405,9 +427,9 @@ def ldwrite(lof,outname = "results.csv", loi = None, sep = "\t", funct = lexdiv,
 		simple_fname = fname.split("/")[-1] #get the filename without folder information
 		
 		if latsld == True: #process texts
-			normed_text = lats.Normalize(open(fname, errors="ignore").read(), params).toks #open file as string, ignore utf8 errors, normalize using parameters, extract tokens
+			normed_text = lats.Normalize(open(fname, encoding = "utf-8", errors="ignore").read(), params).toks #open file as string, ignore utf8 errors, normalize using parameters, extract tokens
 		else:
-			normed_text = open(fname, errors="ignore").read().lower().split(" ")
+			normed_text = open(fname, encoding = "utf-8", errors="ignore").read().lower().split(" ")
 
 		if len(normed_text) < 1 :
 			print(simple_fname, "is empty. Skipping")
