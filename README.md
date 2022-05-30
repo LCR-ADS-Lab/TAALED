@@ -26,11 +26,11 @@ Because some indices presume that texts are at least 50 words in length (see, e.
 ### Preprocess a text
 Minimally, a text string must be turned into a flat list of strings to work with TAALED.
 
-Ideally, a number of text preprocessing/normalization steps will be used. In the example below, the [pylats](https://github.com/LCR-ADS-Lab/pylats) package is used to tokenize, the text, remove most punctuation, add part of speech tags (for homograph disambiguation), lemmatize each word, check for (and ignore) misspelled words (misspelled words will innapropriately inflate ld values), and convert all words to lower case. [pylats](https://github.com/LCR-ADS-Lab/pylats) is quite flexible/customizable, and the taaled package includes a default parameters object `ld.params` for use with pylats.
+Ideally, a number of text preprocessing/normalization steps will be used. In the example below, the [pylats](https://github.com/LCR-ADS-Lab/pylats) package is used to tokenize, the text, remove most punctuation, add part of speech tags (for homograph disambiguation), lemmatize each word, check for (and ignore) misspelled words (misspelled words will innapropriately inflate ld values), and convert all words to lower case. [pylats](https://github.com/LCR-ADS-Lab/pylats) is quite flexible/customizable, and includes a default parameters class `lats.ld_params_en` for for the calculation of lexical diversity.
 
 ```python
 #if pylats is installed, preprocess the sample text using the default taaled parameters file
-clnsmpl = lats.Normalize(ld.txtsmpl, ld.params)
+clnsmpl = lats.Normalize(ld.txtsmpl, lats.ld_params_en) #see pylats documentation for more information on the parameters file
 print(clnsmpl.toks[:10]) #check sample output
 ```
 

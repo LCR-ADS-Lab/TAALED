@@ -7,7 +7,7 @@ Created on Tue Dec 21 10:35:53 2021
 
 Underlying code for TAALED (second generation)
 """
-version = ".26" #split off from pre-process_17.py
+version = ".025" #split off from pre-process_17.py
 
 import math
 import pickle
@@ -55,6 +55,54 @@ Nobody can deny that having an energetic, heathy body is better than being frail
 It's always easier to meet and get on well with new people as a young person. People accept and trust each other easily. It's simple to find common ground when you're young. Older people tend to be more rigid in their views. Traits and ideas begin to turn to stone. After a certain age it becomes impossible to change them.
 
 Let's face it; people don't get wiser when they get old. They only get old, both in mind and the body. It's becomes harder and harder to deal with them so unfortunatly some families even consider to send them away."""
+
+class params: #for use with pylats.Normalize()
+	lang = "en"
+	model = "en_core_web_sm"
+	punctuation = ['``', "''", "'", '.', ',', '?', '!', ')', '(', '%', '/', '-', '_', '-LRB-', '-RRB-', 'SYM', ':', ';', '"']
+	punctse = [".","?","!"]
+	abbrvs = ["mrs.","ms.","mr.","dr.","phd."]
+	splitter = "\n" #for splitting paragraphs
+	rwl = realwords
+	sp = True
+	sspl = "spacy"
+	pos = "upos" #other options are "pos" for Penn tags and "upos" for universal tags
+	removel = ['becuase'] #typos and other words not caught by the real words list
+	lemma = True
+	lower = True
+	attested = True #filter output using real words list?
+	spaces = [" ","  ","   ","    "] #need to add more here
+	override = [] #items the system ignores that should be overridden
+	posignore = []
+	numbers = ["NUM"] #pos_ tag for numbers
+	nonumbers = True
+	connect = "__" #for connecting ngrams
+	contentPOS = [] #can be added, blank for now
+	contentLemIgnore = [] #can be added, blank for now
+
+class default_params: #for resetting params if needed
+	lang = "en"
+	model = "en_core_web_sm"
+	punctuation = ['``', "''", "'", '.', ',', '?', '!', ')', '(', '%', '/', '-', '_', '-LRB-', '-RRB-', 'SYM', ':', ';', '"']
+	punctse = [".","?","!"]
+	abbrvs = ["mrs.","ms.","mr.","dr.","phd."]
+	splitter = "\n" #for splitting paragraphs
+	rwl = realwords
+	sp = True
+	sspl = "spacy"
+	pos = "upos" #other options are "pos" for Penn tags and "upos" for universal tags
+	removel = ['becuase'] #typos and other words not caught by the real words list
+	lemma = True
+	lower = True
+	attested = True #filter output using real words list?
+	spaces = [" ","  ","   ","    "] #need to add more here
+	override = [] #items the system ignores that should be overridden
+	posignore = []
+	numbers = ["NUM"] #pos_ tag for numbers
+	nonumbers = True
+	connect = "__" #for connecting ngrams
+	contentPOS = [] #can be added, blank for now
+	contentLemIgnore = [] #can be added, blank for now
 
 
 #feature rich lexdiv functions
@@ -348,7 +396,7 @@ class parallel():
 				else:
 					self.ldvals = None
 
-def ldwrite(lof,outname = "results.csv", loi = None, sep = "\t", funct = lexdiv, prll = False, params = None, mn = 50, mx = 200, interval = 5, clss = True, functd = None): #presumes that pylats and spacy are installed
+def ldwrite(lof,outname = "results.csv", loi = None, sep = "\t", funct = lexdiv, prll = False, params = params, mn = 50, mx = 200, interval = 5, clss = True, functd = None): #presumes that pylats and spacy are installed
 	try: #check to see if pylats can be loaded
 		from pylats import lats
 		latsld = True
@@ -379,9 +427,6 @@ def ldwrite(lof,outname = "results.csv", loi = None, sep = "\t", funct = lexdiv,
 		simple_fname = fname.split("/")[-1] #get the filename without folder information
 		
 		if latsld == True: #process texts
-			if params == None:
-				print("Please define a parameters class (e.g., params = lats.ld_params_en). Stopping program.")
-				break
 			normed_text = lats.Normalize(open(fname, encoding = "utf-8", errors="ignore").read(), params).toks #open file as string, ignore utf8 errors, normalize using parameters, extract tokens
 		else:
 			normed_text = open(fname, encoding = "utf-8", errors="ignore").read().lower().split(" ")
