@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="taaled",
-    version="0.26",
+    version="0.27",
     author="Kristopher Kyle",
     author_email="kristopherkyle1@gmail.com",
     description="Advanced analysis of lexical diversity",
@@ -14,6 +14,7 @@ setuptools.setup(
     url="https://github.com/LCR-ADS-Lab/TAALED",
     packages=setuptools.find_packages(),
     include_package_data=True,
+    install_requires = ["pylats"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "Operating System :: OS Independent",
