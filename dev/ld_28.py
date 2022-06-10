@@ -7,7 +7,7 @@ Created on Tue Dec 21 10:35:53 2021
 
 Underlying code for TAALED (second generation)
 """
-version = ".32" #split off from pre-process_17.py
+version = ".28" #split off from pre-process_17.py
 
 import math
 import pickle
@@ -262,26 +262,16 @@ class lexdiv():
 			#frequency
 			self.freqd = self.frequency(self.text)
 			self.freqs = sorted(self.freqd.items(), key=operator.itemgetter(1),reverse = True)
-			#mattr50 stuff
+			#mattr stuff
 			self.mattr,self.mattrs,self.mattrwins = self.MATTR(self.text,window_length,outputs = True)
 			self.nmattrwins = len(self.mattrs) #number of windows for mattr
 			if pltn == True:
 				self.mattrplot = ggplot() + aes(x=self.mattrs) + geom_density(fill = "#56B4E9",alpha = .2) + geom_vline(xintercept = self.mattr,color = "red",linetype="dashed") + xlab("Density Plot")
-			#for shorter mattr (mattr11)
-			self.mattr11,self.mattr11s,self.mattr11wins = self.MATTR(self.text,11,outputs = True)
-			self.nmattr11wins = len(self.mattr11s) #number of windows for mattr
-			if pltn == True:
-				self.mattr11plot = ggplot() + aes(x=self.mattr11s) + geom_density(fill = "#56B4E9",alpha = .2) + geom_vline(xintercept = self.mattr11,color = "red",linetype="dashed") + xlab("Density Plot")
 			#mtld stuff
 			self.mtld,self.mtldav,self.mtldo,self.mtldvals,self.mtldlists = self.MTLD(self.text,mn,ttrval,outputs = True)
 			if pltn == True:
 				self.mtldplot = ggplot() + aes(x=self.mtldvals) + geom_density(fill = "#56B4E9",alpha = .2) + geom_vline(xintercept = self.mtld,color = "red",linetype="dashed") + xlab("Density Plot")
-			#MTLD for spoken texts (but at least 150 words long): .92
-			self.mtld92,self.mtld92av,self.mtld92o,self.mtld92vals,self.mtld92lists = self.MTLD(self.text,mn,.92,outputs = True)
-			if pltn == True:
-				self.mtld92plot = ggplot() + aes(x=self.mtld92vals) + geom_density(fill = "#56B4E9",alpha = .2) + geom_vline(xintercept = self.mtld92,color = "red",linetype="dashed") + xlab("Density Plot")
-
-			self.vald = {"ntokens" : self.ntokens, "ntypes" : self.ntypes, "mtld" : self.mtld, "mtld92" : self.mtld92, "mtldo" : self.mtldo, "mattr" : self.mattr, "mattr11" : self.mattr11, "ttr" : self.ttr, "rttr" : self.rttr, "lttr" : self.lttr, "maas" : self.maas, "msttr" : self.msttr, "hdd" : self.hdd}
+			self.vald = {"ntokens" : self.ntokens, "ntypes" : self.ntypes, "mtld" : self.mtld, "mtldo" : self.mtldo, "mattr" : self.mattr, "ttr" : self.ttr, "rttr" : self.rttr, "lttr" : self.lttr, "maas" : self.maas, "msttr" : self.msttr, "hdd" : self.hdd}
 
 #### Parallel Analysis
 class parallel():
@@ -375,7 +365,7 @@ def ldwrite(lof,outname = "results.csv", loi = None, sep = "\t", funct = lexdiv,
 		latsld = False
 	
 	if loi == None: #default indices to process:
-		loi = ["ntokens","ntypes","mtld", "mtld92", "mtldo", "mattr","mattr11", "ttr", "rttr", "lttr", "maas", "msttr", "hdd"]
+		loi = ["ntokens","ntypes","mtld", "mtldo", "mattr", "ttr", "rttr", "lttr", "maas", "msttr", "hdd"]
 
 	### Main Function: ###
 	checked = 0 #for information to user
