@@ -37,7 +37,7 @@ from pylats import lats #optional, but recommended for text preprocessing
 ```
 
 ### How to Preprocess a text
-Because some indices presume that texts are at least 50 words in length (see, e.g., McCarthy & Jarvis, 2010<sup>[16](https://lcr-ads-lab.github.io/TAALED/docs/references/1.%20Studies.html#mccarthy-p-m--jarvis-s-2007)</sup>; Kyle, Crossley, & Jarvis, 2021<sup>[11](https://lcr-ads-lab.github.io/TAALED/docs/references/1.%20Studies.html#kyle-k-crossley-s-a--jarvis-s-2021)</sup>; Zenker & Kyle, 2021<sup>[20](https://lcr-ads-lab.github.io/TAALED/docs/references/1.%20Studies.html#zenker-f--kyle-k-2021)</sup>, we will use a [longer text in this example](https://catalog.ldc.upenn.edu/desc/addenda/LDC2014T06.orig.txt) that conveniently is included in TAALED.
+Because some indices presume that texts are at least 50 words in length (see, e.g., McCarthy & Jarvis, 2010<sup>[18](https://lcr-ads-lab.github.io/TAALED/docs/references/1.%20Studies.html#mccarthy-p-m--jarvis-s-2007)</sup>; Kyle, Crossley, & Jarvis, 2021<sup>[12](https://lcr-ads-lab.github.io/TAALED/docs/references/1.%20Studies.html#kyle-k-crossley-s-a--jarvis-s-2021)</sup>; Zenker & Kyle, 2021<sup>[22](https://lcr-ads-lab.github.io/TAALED/docs/references/1.%20Studies.html#zenker-f--kyle-k-2021)</sup>, we will use a [longer text in this example](https://catalog.ldc.upenn.edu/desc/addenda/LDC2014T06.orig.txt) that conveniently is included in TAALED.
 
 Minimally, a text string must be turned into a flat list of strings to work with TAALED.
 
