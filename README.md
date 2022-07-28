@@ -174,7 +174,7 @@ The Mean-Segmental Type-Token Ratio (MSTTR) is the average TTR for successive se
 
 
 ### MATTR<sup>★★★</sup>
-The Moving-Average Type-Token Ratio calculates the moving average for all segments of a given length. For a segment length of 50 tokens, TTR is calculated on tokens 1-50, 2-51, 3-53, etc., and the resulting TTR measurements are averaged to produce the final MATTR value (Covington & McFall, 2010)<sup>[15]</sup>.
+The Moving-Average Type-Token Ratio calculates the moving average for all segments of a given length. For a segment length of 50 tokens, TTR is calculated on tokens 1-50, 2-51, 3-52, etc., and the resulting TTR measurements are averaged to produce the final MATTR value (Covington & McFall, 2010)<sup>[15]</sup>.
 
 <details><summary>LEARN MORE</summary>
 <p>
