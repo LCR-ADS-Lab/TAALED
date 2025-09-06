@@ -2,7 +2,7 @@ title: TAALED
 lang: en
 description: This is the official documentation of TAALED.
 
-remote_theme: rundocs/jekyll-rtd-theme
+remote_theme: carlosperate/jekyll-theme-rtd
 
 readme_index:
   with_frontmatter: true
