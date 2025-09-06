@@ -4,11 +4,17 @@ description: This is the official documentation of TAALED.
 
 remote_theme: carlosperate/jekyll-theme-rtd
 
+url: "https://LCR-ADS-Lab.github.io"
+baseurl: "/TAALED"
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-readme-index
+
 readme_index:
   with_frontmatter: true
 
 exclude:
   - Makefile
-  - CNAME
   - Gemfile
   - Gemfile.lock
