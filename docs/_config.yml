@@ -4,8 +4,26 @@ description: This is the official documentation of TAALED.
 
 url: "https://lcr-ads-lab.github.io"
 baseurl: "/TAALED"
+remote_theme: carlosperate/jekyll-theme-rtd
 
-remote_theme: just-the-docs/just-the-docs
+# Theme settings
+site_author: LCR-ADS-Lab
+repo_url: "https://github.com/LCR-ADS-Lab/TAALED"
+edit_on_github: true
+github_docs_folder: true
+sticky_navigation: true
+prev_next_buttons_location: bottom
+search_enabled: true
+hljs_style: github-gist
+
 plugins:
   - jekyll-remote-theme
+  - jekyll-readme-index
+  - jekyll-seo-tag
+
+readme_index:
+  with_frontmatter: true
+
+permalink: pretty
+markdown: kramdown
   
