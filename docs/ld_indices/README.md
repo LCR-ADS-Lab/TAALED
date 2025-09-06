@@ -152,5 +152,3 @@ print(ldvals2.freqs[:5])
 ### Let's start calculating LD indices!
 This quick-start guide walked you through how to create `ldvals` object and output basic information.
 In the following pages, we outline how to output lexical diversity indices and how to batch process input text files and save the output in csv.
-
-{% include list.liquid %}
