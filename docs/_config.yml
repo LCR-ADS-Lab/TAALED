@@ -2,13 +2,17 @@ title: TAALED
 lang: en
 description: This is the official documentation of TAALED.
 
+url: "https://LCR-ADS-Lab.github.io"
+baseurl: "/TAALED"
+
 remote_theme: clearpathrobotics/jekyll-rtd-theme
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-readme-index
+  - jemoji
+  - jekyll-avatar
+  - jekyll-mentions
 
 readme_index:
   with_frontmatter: true
-
-exclude:
-  - Makefile
-  - CNAME
-  - Gemfile
-  - Gemfile.lock
